@@ -1,0 +1,26 @@
+ingestion:
+  mode: csv
+  input_dir: data
+  csv_suffix: .csv
+  n_cells: 4
+  n_hours: 12
+  frequency: 5min
+  seed: 42
+
+transform:
+  carrier_bandwidth_mhz: 100.0
+  validate_schema: true
+  fail_on_schema_error: true
+
+export:
+  output_parquet: data/curated/sample_private5g_ran_hourly.parquet
+  partition_cols:
+    - date
+    - cell_id
+  parquet_engine: pyarrow
+  metrics_report: data/reports/sample_observability_report.json
+  markdown_report: reports/sample_pipeline_report.md
+  quarantine_path: data/quarantine/rejected_rows.csv
+
+streaming:
+  enabled: false

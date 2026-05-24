@@ -1,0 +1,42 @@
+[
+  {
+    "gate": "Seeded simulation",
+    "status": "PASS"
+  },
+  {
+    "gate": "Deterministic regeneration",
+    "status": "PASS"
+  },
+  {
+    "gate": "Schema validation",
+    "status": "PASS"
+  },
+  {
+    "gate": "Quarantine path tested",
+    "status": "PASS"
+  },
+  {
+    "gate": "Benchmark artifacts",
+    "status": "PASS"
+  },
+  {
+    "gate": "Live private 5G telemetry",
+    "status": "NOT IMPLEMENTED"
+  },
+  {
+    "gate": "Vendor RAN integration",
+    "status": "NOT CLAIMED"
+  },
+  {
+    "gate": "MES/SCADA/PLC integration",
+    "status": "NOT IMPLEMENTED"
+  },
+  {
+    "gate": "Safety certification",
+    "status": "NOT CLAIMED"
+  },
+  {
+    "gate": "Production deployment",
+    "status": "NOT CLAIMED"
+  }
+]

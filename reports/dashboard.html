@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Private 5G Edge-AI Capacity Console</title>
+  <style>
+:root {
+  --bg: #f1f5f9;
+  --panel: #ffffff;
+  --line: #cbd5e1;
+  --text: #0f172a;
+  --muted: #64748b;
+  --blue: #1d4ed8;
+  --blue-soft: #dbeafe;
+  --amber: #b45309;
+  --amber-soft: #fef3c7;
+  --red: #b91c1c;
+  --red-soft: #fee2e2;
+  --green: #047857;
+  --green-soft: #d1fae5;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+.wrap { max-width: 1280px; margin: 0 auto; padding: 32px 28px; }
+header { margin-bottom: 28px; }
+header h1 { margin: 0 0 8px; font-size: 36px; letter-spacing: -0.5px; }
+header .sub { color: var(--muted); max-width: 920px; font-size: 16px; }
+header .nav { margin-top: 14px; font-size: 14px; color: var(--muted); }
+header .nav a { color: var(--blue); text-decoration: none; margin-right: 14px; }
+header .nav a:hover { text-decoration: underline; }
+
+section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 22px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+section h2 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+section h3 {
+  margin: 0 0 18px;
+  font-size: 26px;
+  letter-spacing: -0.3px;
+}
+section p { margin: 0 0 14px; }
+
+.bignum {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 18px 0 22px;
+}
+.bignum .stat {
+  background: var(--blue-soft);
+  border-radius: 10px;
+  padding: 14px 20px;
+  min-width: 160px;
+}
+.bignum .stat .label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.bignum .stat .value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: -0.5px;
+  margin-top: 4px;
+}
+.bignum .stat.green { background: var(--green-soft); }
+.bignum .stat.green .value { color: var(--green); }
+.bignum .stat.red { background: var(--red-soft); }
+.bignum .stat.red .value { color: var(--red); }
+.bignum .stat.amber { background: var(--amber-soft); }
+.bignum .stat.amber .value { color: var(--amber); }
+
+.decision-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 22px;
+}
+.decision-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.decision-card .label {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.decision-card .value {
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+.decision-card .note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.badge.pass { background: var(--green-soft); color: var(--green); }
+.badge.warn { background: var(--amber-soft); color: var(--amber); }
+.badge.risk { background: var(--red-soft); color: var(--red); }
+.callout {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+figure { margin: 18px 0; }
+figure img {
+  width: 100%;
+  max-width: 880px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  display: block;
+}
+figcaption {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 6px;
+  max-width: 880px;
+}
+
+.figrow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 18px 0;
+}
+.figrow figure { margin: 0; }
+.figrow img { max-width: 100%; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12px 0 16px;
+  font-size: 14px;
+}
+th, td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+td.right, th.right { text-align: right; }
+tr.over td { background: var(--red-soft); }
+
+.boundary {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--muted);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 18px;
+}
+.boundary h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.boundary p { font-size: 14px; margin: 0; color: var(--muted); }
+
+footer {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+footer a { color: var(--blue); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+@media (max-width: 880px) {
+  .figrow { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .decision-strip { grid-template-columns: 1fr; }
+  .bignum { gap: 14px; }
+  .bignum .stat { min-width: 130px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Private 5G Edge-AI Capacity Console</h1>
+  <div class="sub">AGV fleet growth, worst-cell latency, and edge GPU bottlenecks under a 20 ms control-loop budget. Static evidence only: seeded simulation, derived capacity metrics, sensitivity, benchmarks, and explicit boundaries.</div>
+  <div class="nav"><a href="index.html">Portal (cards view)</a><a href="../TECH_BRIEF.md">One-page brief</a><a href="../README.md">README</a><a href="benchmarks.md">Benchmarks</a></div>
+</header>
+<div class="decision-strip"><article class="decision-card"><div class="label">Decision</div><div class="value">100 AGVs</div><div class="note">Safe simulated capacity at the 20 ms p95 budget.</div></article><article class="decision-card"><div class="label">Failure point</div><div class="value">120 AGVs</div><div class="note">First tested expansion that crosses the budget.</div></article><article class="decision-card"><div class="label">Bottleneck</div><div class="value">Assembly edge GPU</div><div class="note">Saturation appears first in the seeded outputs.</div></article><article class="decision-card"><div class="label">Confidence</div><div class="value">Seeded + deterministic</div><div class="note">Replay, benchmark, and metrics artifacts regenerate.</div></article><article class="decision-card"><div class="label">Boundary</div><div class="value">Simulation only</div><div class="note">Seeded evidence; no live private 5G network.</div></article></div><section><h2>Operational Decision Summary</h2><h3>How far can the AGV fleet grow before the control loop breaks?</h3><div class="bignum"><div class="stat green"><div class="label">Recommended ceiling</div><div class="value">100 AGVs</div></div><div class="stat red"><div class="label">First unsafe test point</div><div class="value">120 AGVs</div></div><div class="stat amber"><div class="label">Control-loop budget</div><div class="value">20 ms</div></div></div><table><tbody><tr><th>Recommended simulated fleet ceiling</th><td>100 AGVs</td></tr>
+<tr><th>First tested unsafe expansion point</th><td>120 AGVs</td></tr>
+<tr><th>Binding bottleneck</th><td>Assembly-zone edge GPU saturation appears first in this seeded simulation.</td></tr>
+<tr><th>Primary metric</th><td>worst-cell hourly p95 latency</td></tr>
+<tr><th>Control-loop budget</th><td>20 ms p95</td></tr>
+<tr><th>Decision basis</th><td>seeded simulation + generated plots + budget sensitivity + multi-seed stability</td></tr>
+<tr><th>Operator recommendation</th><td>Cap expansion at 100 AGVs until live telemetry validates headroom.</td></tr></tbody></table></section><section><h2>Problem -> What I Built -> What I Found -> What I Would Do</h2><h3>The operator story in one pass</h3><div class="grid-2"><div class="callout"><h4>Problem</h4><p>A factory can add AGVs and still see healthy-looking private 5G metrics while edge inference latency quietly becomes the real constraint.</p></div><div class="callout"><h4>What I Built</h4><p>I built a reproducible telemetry-intelligence pipeline that joins private-5G-style KPIs, AGV fleet load, edge GPU pressure, schema validation, quarantine handling, deterministic simulation, benchmarks, and a static decision dashboard.</p></div><div class="callout"><h4>What I Found</h4><p>The simulated floor stayed under the 20 ms p95 budget through 100 AGVs. At 120 AGVs, the budget broke. Assembly-zone edge GPU saturation appeared first.</p></div><div class="callout"><h4>What I Would Do</h4><p>I would cap expansion at 100 AGVs, rebalance assembly-zone workload, reserve edge GPU capacity before testing 120 AGVs, and validate with live RAN, GPU, and factory telemetry before any real deployment decision.</p></div></div></section><section><h2>Bottleneck Attribution</h2><h3>What appears to break first, and why?</h3><table><thead><tr><th>Candidate</th><th>Finding</th><th>Evidence</th><th>Decision implication</th></tr></thead><tbody><tr><td>Edge GPU pool</td><td>Assembly-zone edge GPU saturation appears first in the seeded simulation.</td><td>Assembly zone hits the saturation knee first and carries 42% of the fleet.</td><td>Reserve or add edge GPU capacity before testing 120 AGVs.</td></tr>
+<tr><td>Radio / private 5G layer</td><td>Not shown as the first bottleneck in this seeded simulation.</td><td>The latency break is tied to edge GPU pressure and worst-cell p95 behavior, not a proven radio-only failure.</td><td>Do not assume radio-capacity spend is the first fix.</td></tr>
+<tr><td>Zone-level fleet distribution</td><td>Assembly carries the heaviest load.</td><td>42% assembly, 34% paint, 24% warehouse.</td><td>Rebalance routing or workload before expanding fleet size.</td></tr>
+<tr><td>Worst-cell latency budget</td><td>100 AGVs remains under the 20 ms p95 budget, while 120 AGVs crosses it.</td><td>18.39 ms at 100 AGVs and 23.40 ms at 120 AGVs.</td><td>Keep the simulated ceiling at 100 AGVs until validated.</td></tr>
+<tr><td>Data pipeline health</td><td>Evidence path is reproducible and tested.</td><td>Schema validation, quarantine path, benchmarks, deterministic regeneration, tests/CI.</td><td>The analysis is reproducible, but it is still not live production telemetry.</td></tr></tbody></table></section><section><h2>Operator Action Plan</h2><h3>What the operator should do next</h3><table><thead><tr><th>Action</th><th>Priority</th><th>Why</th><th>Evidence</th><th>Boundary</th></tr></thead><tbody><tr><td>Cap expansion at 100 AGVs</td><td>P0</td><td>Last tested fleet size under the 20 ms p95 budget.</td><td>100 AGVs = 18.39 ms p95.</td><td>Seeded simulation, not production approval.</td></tr>
+<tr><td>Validate with live RAN + edge GPU telemetry</td><td>P0</td><td>Current evidence is generated from seeded scenarios.</td><td>Boundary section and readiness checklist.</td><td>Required before any real deployment decision.</td></tr>
+<tr><td>Rebalance assembly-zone AGV routing/load</td><td>P1</td><td>Assembly zone carries the heaviest load and saturates first.</td><td>42% assembly fleet share.</td><td>Validate against real routing and factory layout.</td></tr>
+<tr><td>Reserve or add edge GPU capacity before testing 120 AGVs</td><td>P1</td><td>Edge inference pool appears to be the limiting layer.</td><td>120 AGVs crosses 23.40 ms p95.</td><td>Confirm with live GPU utilization and queueing telemetry.</td></tr>
+<tr><td>Re-run scenario at 15 ms, 20 ms, and 25 ms budgets</td><td>P1</td><td>Control-loop deadline changes the allowable fleet size.</td><td>15 ms = 80 AGVs, 20 ms = 100 AGVs, 25 ms = 120 AGVs</td><td>Budget choice must come from actual control-loop requirements.</td></tr></tbody></table></section><section><h2>Evidence vs Boundary</h2><h3>What is demonstrated, and what is deliberately not claimed</h3><div class="grid-2"><div class="callout"><h4>Evidence demonstrated</h4><ul><li>Seeded AGV fleet simulation</li><li>Worst-cell p95 latency budget check</li><li>Edge GPU load / zone capacity signal</li><li>Zone-level load signal</li><li>Schema validation and quarantine behavior</li><li>Deterministic artifact regeneration</li><li>Benchmark and CI validation</li></ul></div><div class="callout"><h4>Boundary preserved</h4><ul><li>No live private 5G network</li><li>No vendor RAN integration</li><li>No MES/SCADA/PLC connector</li><li>No real AGV fleet telemetry</li><li>No production deployment claim</li><li>No safety certification claim</li></ul></div></div></section><section><h2>Operator Console Readiness</h2><h3>Implemented evidence versus deployment boundaries</h3><table><tbody><tr><th>Seeded simulation</th><td><span class="badge pass">PASS</span></td></tr>
+<tr><th>Deterministic regeneration</th><td><span class="badge pass">PASS</span></td></tr>
+<tr><th>Schema validation</th><td><span class="badge pass">PASS</span></td></tr>
+<tr><th>Quarantine path tested</th><td><span class="badge pass">PASS</span></td></tr>
+<tr><th>Benchmark artifacts</th><td><span class="badge pass">PASS</span></td></tr>
+<tr><th>Live private 5G telemetry</th><td><span class="badge warn">NOT IMPLEMENTED</span></td></tr>
+<tr><th>Vendor RAN integration</th><td><span class="badge warn">NOT CLAIMED</span></td></tr>
+<tr><th>MES/SCADA/PLC integration</th><td><span class="badge warn">NOT IMPLEMENTED</span></td></tr>
+<tr><th>Safety certification</th><td><span class="badge warn">NOT CLAIMED</span></td></tr>
+<tr><th>Production deployment</th><td><span class="badge warn">NOT CLAIMED</span></td></tr></tbody></table></section><section><h2>Manufacturing</h2><h3>How many AGVs can the floor add before the 20 ms control-loop budget breaks?</h3><p>A factory floor running edge-AI vision on AGVs over private 5G. Ops wants to grow the fleet. The radio isn't the bottleneck — the edge GPU pool feeding inference to the AGV cameras is. I swept fleet size from 20 to 160 AGVs across three URLLC cells (assembly, paint, warehouse) and watched worst-cell hourly p95 latency.</p><div class="bignum"><div class="stat green"><div class="label">Max fleet under budget</div><div class="value">100 AGVs</div></div><div class="stat"><div class="label">Budget</div><div class="value">20 ms</div></div><div class="stat red"><div class="label">First over-budget fleet</div><div class="value">120 AGVs</div></div></div><figure><img src="scenarios/manufacturing_agv/figures/01_latency_vs_fleet.png" alt="Worst-cell p95 latency vs fleet size with 20 ms budget line"><figcaption>Worst-cell hourly p95 latency stays under the 20 ms budget through 100 AGVs. At 120 AGVs the assembly-zone cell has saturated; latency reaches 23.4 ms.</figcaption></figure><div class="figrow"><figure><img src="scenarios/manufacturing_agv/figures/02_edge_load_by_zone.png" alt="Edge GPU load by zone"><figcaption>Assembly zone hits the saturation knee first — it carries 42 % of the fleet versus 34 % paint and 24 % warehouse.</figcaption></figure><figure><img src="scenarios/manufacturing_agv/figures/03_budget_violation_timeline.png" alt="Per-sample latency over the fleet sweep"><figcaption>Every per-sample latency reading. Blue stays under budget; red goes over. The cloud climbs through the back half of the sweep.</figcaption></figure><figure><img src="scenarios/manufacturing_agv/figures/01_latency_vs_fleet.png" alt="Headline reference"><figcaption>Headline view (same plot, larger above).</figcaption></figure></div><h4 style='margin: 24px 0 6px; font-size: 15px;'>Per-fleet detail</h4><table><thead><tr><th class='right'>Fleet</th><th class='right'>Worst-cell p95 (ms)</th><th class='right'>Mean p95 (ms)</th><th class='right'>Mean edge load</th><th>Budget</th></tr></thead><tbody><tr><td class='right'>20</td><td class='right'>7.62</td><td class='right'>7.08</td><td class='right'>0.27</td><td>ok</td></tr>
+<tr><td class='right'>40</td><td class='right'>7.53</td><td class='right'>7.28</td><td class='right'>0.34</td><td>ok</td></tr>
+<tr><td class='right'>60</td><td class='right'>9.29</td><td class='right'>8.10</td><td class='right'>0.40</td><td>ok</td></tr>
+<tr><td class='right'>80</td><td class='right'>14.56</td><td class='right'>10.67</td><td class='right'>0.46</td><td>ok</td></tr>
+<tr><td class='right'>100</td><td class='right'>18.39</td><td class='right'>14.17</td><td class='right'>0.52</td><td>ok</td></tr>
+<tr class="over"><td class='right'>120</td><td class='right'>23.40</td><td class='right'>18.47</td><td class='right'>0.60</td><td>over</td></tr>
+<tr class="over"><td class='right'>140</td><td class='right'>27.78</td><td class='right'>22.18</td><td class='right'>0.67</td><td>over</td></tr>
+<tr class="over"><td class='right'>160</td><td class='right'>31.51</td><td class='right'>24.82</td><td class='right'>0.73</td><td>over</td></tr></tbody></table><h4 style='margin: 20px 0 6px; font-size: 15px;'>If you change the budget</h4><table style='max-width: 420px;'><thead><tr><th class='right'>Latency budget</th><th class='right'>Max fleet</th></tr></thead><tbody><tr><td class='right'>15 ms</td><td class='right'>80 AGVs</td></tr>
+<tr><td class='right'>20 ms</td><td class='right'>100 AGVs</td></tr>
+<tr><td class='right'>25 ms</td><td class='right'>120 AGVs</td></tr></tbody></table><p style='margin-top: 18px;'><a href="business_cases/manufacturing_agv_capacity.md">Full business case (sensitivity + four-seed stability) →</a></p></section><section><h2>Secondary portability scenario</h2><h3>How early does the line catch a bioreactor contamination event?</h3><div class="callout"><strong>Secondary portability scenario, not the headline use case.</strong> This is seeded diagnostic evidence that the pipeline shape can support another vertical. It is not real pharmaceutical plant telemetry.</div><p>To show the pipeline isn't single-use, I pointed it at a non-manufacturing vertical: a pharma cleanroom bioreactor with slow sensor drift through the shift and one ~75-minute contamination event injected late in the day. The detector is an online z-score on the edge-load × latency signal, using a trailing 1-hour baseline with a 10-minute gap before the test sample.</p><div class="bignum"><div class="stat green"><div class="label">Lead time</div><div class="value">5 min</div></div><div class="stat green"><div class="label">Precision</div><div class="value">1.00</div></div><div class="stat"><div class="label">Threshold</div><div class="value">z = 3.0</div></div></div><figure><img src="scenarios/pharma_bioreactor/figures/02_detector_zscore.png" alt="Detector z-score across the day with event window shaded"><figcaption>The detector's z-score sits in the noise band through the drift hours, then spikes at the event onset above the threshold line.</figcaption></figure><div class="figrow"><figure><img src="scenarios/pharma_bioreactor/figures/01_signal_timeline.png" alt="Edge × latency signal across 24 hours"><figcaption>The underlying signal — edge inference load × latency — climbs sharply at the event window (shaded red).</figcaption></figure><figure><img src="scenarios/pharma_bioreactor/figures/03_threshold_sweep.png" alt="Lead time vs precision across threshold sweep"><figcaption>Lead time stays flat at 5 min as threshold rises; precision climbs from 0.57 to 1.00 as the threshold tightens past z = 3.0.</figcaption></figure><figure><img src="scenarios/pharma_bioreactor/figures/02_detector_zscore.png" alt="Detector z-score reference"><figcaption>Detector z-score (same plot, larger above).</figcaption></figure></div><h4 style='margin: 24px 0 6px; font-size: 15px;'>Threshold sweep</h4><table><thead><tr><th class='right'>z-threshold</th><th>Detected</th><th class='right'>Lead time</th><th class='right'>TP windows</th><th class='right'>FP windows</th><th class='right'>Precision</th></tr></thead><tbody><tr><td class='right'>2.0</td><td>yes</td><td class='right'>5 min</td><td class='right'>4</td><td class='right'>3</td><td class='right'>0.57</td></tr>
+<tr><td class='right'>2.5</td><td>yes</td><td class='right'>5 min</td><td class='right'>3</td><td class='right'>2</td><td class='right'>0.60</td></tr>
+<tr><td class='right'>3.0</td><td>yes</td><td class='right'>5 min</td><td class='right'>3</td><td class='right'>0</td><td class='right'>1.00</td></tr>
+<tr><td class='right'>3.5</td><td>yes</td><td class='right'>5 min</td><td class='right'>2</td><td class='right'>0</td><td class='right'>1.00</td></tr>
+<tr><td class='right'>4.0</td><td>yes</td><td class='right'>5 min</td><td class='right'>2</td><td class='right'>0</td><td class='right'>1.00</td></tr></tbody></table><h4 style='margin: 20px 0 6px; font-size: 15px;'>Same result across four seeds</h4><table style='max-width: 520px;'><thead><tr><th class='right'>Seed</th><th>Detected</th><th class='right'>Lead time</th><th class='right'>Precision</th></tr></thead><tbody><tr><td class='right'>42</td><td>yes</td><td class='right'>5 min</td><td class='right'>1.00</td></tr>
+<tr><td class='right'>7</td><td>yes</td><td class='right'>5 min</td><td class='right'>1.00</td></tr>
+<tr><td class='right'>17</td><td>yes</td><td class='right'>5 min</td><td class='right'>1.00</td></tr>
+<tr><td class='right'>99</td><td>yes</td><td class='right'>5 min</td><td class='right'>1.00</td></tr></tbody></table><p style='margin-top: 18px;'><a href="business_cases/pharma_bioreactor_anomaly.md">Full business case (threshold + seed sensitivity) →</a></p></section><section><h2>Measured pipeline benchmarks</h2><h3>Not FPS. What's actually meaningful for a telemetry layer.</h3><p>This isn't an inference workload, so FPS and GPU utilisation would be staged. The benchmarks that <em>are</em> meaningful for a telemetry-intelligence layer: ingest throughput, schema-quarantine throughput under corrupted input, end-to-end regeneration wall-clock, and determinism. All measured.</p><div class="bignum"><div class="stat"><div class="label">Ingest</div><div class="value">10,455</div><div style="font-size: 11px; color: var(--muted); margin-top: 2px;">rows / sec</div></div><div class="stat"><div class="label">Quarantine</div><div class="value">168,237</div><div style="font-size: 11px; color: var(--muted); margin-top: 2px;">rows / sec @ 5% corruption</div></div><div class="stat"><div class="label">Regeneration</div><div class="value">16.1s</div><div style="font-size: 11px; color: var(--muted); margin-top: 2px;">both scenarios + cases + portal</div></div><div class="stat green"><div class="label">Determinism</div><div class="value" style="font-size: 22px;">byte-identical</div><div style="font-size: 11px; color: var(--muted); margin-top: 2px;">SHA-256, two runs at seed 42</div></div></div><p style='margin-top: 18px;'><a href="benchmarks.md">Full methodology + stage breakdown →</a></p></section><div class="boundary"><h4>What I tested, what I didn't</h4><p>Every number on this page comes from a seeded simulation. I didn't connect to a live private 5G network, vendor RAN, vendor edge-AI platform, MES, SCADA, PLC, or a real AGV fleet. What's portable is the shape — the schema, the scenario pattern, the way each answer comes with its sensitivity story attached.</p></div><footer>Source: <a href="https://github.com/obiedeh/private-5g-edge-telemetry">github.com/obiedeh/private-5g-edge-telemetry</a></footer>
+</div>
+</body>
+</html>

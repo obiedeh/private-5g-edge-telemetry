@@ -1,0 +1,62 @@
+{
+  "baseline_gap_bins": 2,
+  "baseline_window_bins": 12,
+  "boundary": "Planning estimate from a simulated drift+event profile. Not a measurement of any specific cleanroom, MES integration, or vendor edge-AI computer-vision model.",
+  "consecutive_bins_to_fire": 2,
+  "default_result": {
+    "detected": true,
+    "fp_windows": 0,
+    "lead_time_minutes": 5.0,
+    "precision": 1.0,
+    "tp_windows": 3
+  },
+  "default_threshold": 3.0,
+  "event_end_hour": 21.25,
+  "event_start_hour": 20.0,
+  "question": "How early can we detect a bioreactor anomaly (sensor drift then contamination event), and at what precision?",
+  "seed": 42,
+  "target_cell_id": "cell_pha_001",
+  "threshold_sweep": [
+    {
+      "detected": true,
+      "fp_windows": 3,
+      "lead_time_minutes": 5.0,
+      "precision": 0.5714285714285714,
+      "threshold": 2.0,
+      "tp_windows": 4
+    },
+    {
+      "detected": true,
+      "fp_windows": 2,
+      "lead_time_minutes": 5.0,
+      "precision": 0.6,
+      "threshold": 2.5,
+      "tp_windows": 3
+    },
+    {
+      "detected": true,
+      "fp_windows": 0,
+      "lead_time_minutes": 5.0,
+      "precision": 1.0,
+      "threshold": 3.0,
+      "tp_windows": 3
+    },
+    {
+      "detected": true,
+      "fp_windows": 0,
+      "lead_time_minutes": 5.0,
+      "precision": 1.0,
+      "threshold": 3.5,
+      "tp_windows": 2
+    },
+    {
+      "detected": true,
+      "fp_windows": 0,
+      "lead_time_minutes": 5.0,
+      "precision": 1.0,
+      "threshold": 4.0,
+      "tp_windows": 2
+    }
+  ],
+  "vertical": "pharma_bioreactor"
+}

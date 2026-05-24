@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Private 5G Edge-AI Capacity Console</title>
+  <style>
+:root {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --line: #dbe4ee;
+  --text: #0f172a;
+  --muted: #64748b;
+  --blue: #2563eb;
+  --red: #c04a4a;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background:
+    linear-gradient(180deg, rgba(37, 99, 235, 0.10), rgba(248, 250, 252, 0.0) 240px),
+    var(--bg);
+}
+.wrap { max-width: 1400px; margin: 0 auto; padding: 28px; }
+h1 { margin: 0 0 8px; font-size: 34px; }
+.sub { color: var(--muted); max-width: 960px; line-height: 1.55; }
+.story {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-top: 18px;
+  max-width: 1040px;
+}
+.story h2 { margin: 0 0 8px; font-size: 20px; }
+.story p { color: var(--muted); line-height: 1.55; margin: 8px 0; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+.visual-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+.eyebrow {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.card h3 { margin: 6px 0 4px; font-size: 18px; }
+.card p { color: var(--muted); line-height: 1.55; margin: 8px 0 12px; }
+.plot-card img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  margin: 10px 0 8px;
+}
+.plot-card a.source { display: inline-block; margin-top: 4px; font-size: 13px; }
+.metric {
+  display: inline-block;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--blue);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  margin-right: 6px;
+}
+.metric.warn { background: rgba(192, 74, 74, 0.10); color: var(--red); }
+ul { padding-left: 18px; margin: 6px 0 0; }
+li { margin: 6px 0; }
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 12px 0 14px;
+}
+.thumbs img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.footer {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.boundary {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-top: 22px;
+}
+.boundary h3 { margin: 0 0 6px; font-size: 16px; }
+@media (max-width: 880px) {
+  .grid { grid-template-columns: 1fr; }
+  .visual-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Private 5G Edge-AI Capacity Console</h1>
+    <div class="sub">
+      I built a reproducible telemetry system to test when AGV fleet growth breaks a 20 ms control-loop budget.
+    </div>
+    <section class="story">
+      <h2>The factory question</h2>
+      <p>I built this project around one practical factory question: how far can a private 5G floor scale its AGV fleet before the 20 ms control-loop budget breaks?</p>
+      <p>The simulated floor stayed under budget through <strong>100 AGVs</strong>. At <strong>120 AGVs</strong>, the budget broke. The first constraint was not simply radio capacity; assembly-zone edge GPU saturation appeared first in the seeded outputs.</p>
+      <p>That changes the decision: cap expansion at 100 AGVs, rebalance assembly-zone workload, reserve edge GPU capacity before testing 120 AGVs, and validate with live RAN and GPU telemetry before any real deployment decision.</p>
+    </section>
+<div class="visual-grid"><section class="card plot-card"><div class="eyebrow">Visual evidence</div><h3>Fleet ceiling: 100 AGVs stayed under 20 ms</h3><a href="dashboard.html"><img src="scenarios/manufacturing_agv/figures/01_latency_vs_fleet.png" alt="Fleet ceiling: 100 AGVs stayed under 20 ms"></a><p>Worst-cell hourly p95 latency stays below the control-loop budget through the 100-AGV scenario.</p><a class="source" href="dashboard.html">Open source artifact</a></section>
+<section class="card plot-card"><div class="eyebrow">Visual evidence</div><h3>120 AGVs crossed the latency budget</h3><a href="scenarios/manufacturing_agv/figures/03_budget_violation_timeline.png"><img src="scenarios/manufacturing_agv/figures/03_budget_violation_timeline.png" alt="120 AGVs crossed the latency budget"></a><p>Per-sample latency readings show the over-budget cloud once the tested fleet reaches the unsafe expansion band.</p><a class="source" href="scenarios/manufacturing_agv/figures/03_budget_violation_timeline.png">Open source artifact</a></section>
+<section class="card plot-card"><div class="eyebrow">Visual evidence</div><h3>Assembly-zone GPU saturation appeared first</h3><a href="scenarios/manufacturing_agv/figures/02_edge_load_by_zone.png"><img src="scenarios/manufacturing_agv/figures/02_edge_load_by_zone.png" alt="Assembly-zone GPU saturation appeared first"></a><p>The assembly zone carries the pressure signal in this seeded simulation, which points the next test toward edge capacity and workload balance.</p><a class="source" href="scenarios/manufacturing_agv/figures/02_edge_load_by_zone.png">Open source artifact</a></section></div>    <div class="grid">
+<section class="card"><div class="eyebrow">Start here</div><h3>Executive dashboard</h3><p>Open the operator console first. It answers the AGV capacity question, shows the first unsafe expansion point, attributes the likely bottleneck, and keeps deployment boundaries visible.</p><span class="metric">ceiling: 100 AGVs</span><span class="metric">budget: 20 ms</span><ul><li><a href="dashboard.html">Open dashboard</a></li><li><a href="dashboard.html">Operational Decision Summary</a></li><li><a href="dashboard.html">Bottleneck Attribution</a></li><li><a href="dashboard.html">Operator Action Plan</a></li><li><a href="dashboard.html">Evidence vs Boundary</a></li></ul></section>
+<section class="card"><div class="eyebrow">Manufacturing decision</div><h3>AGV capacity and 20 ms budget</h3><p>The seeded manufacturing sweep keeps worst-cell p95 latency under 20 ms through 100 AGVs. The first tested unsafe expansion point is 120 AGVs.</p><span class="metric">recommended ceiling: 100 AGVs</span><span class="metric">first unsafe: 120 AGVs</span><ul><li><a href="business_cases/manufacturing_agv_capacity.md">Business case</a></li><li><a href="scenarios/manufacturing_agv/dashboard_summary.md">Scenario summary</a></li><li><a href="scenarios/manufacturing_agv/scenario_metrics.json">Scenario metrics</a></li><li><a href="scenarios/manufacturing_agv/fleet_summary.csv">Fleet summary CSV</a></li></ul></section>
+<section class="card"><div class="eyebrow">Bottleneck evidence</div><h3>Edge GPU / worst-cell p95 analysis</h3><p>Manufacturing evidence links the 20 ms breach to worst-cell latency growth and simulated edge-load pressure in the assembly zone. This is a likely bottleneck candidate, not live factory attribution.</p><ul><li><a href="scenarios/manufacturing_agv/figures/01_latency_vs_fleet.png">Latency vs fleet</a></li><li><a href="scenarios/manufacturing_agv/figures/02_edge_load_by_zone.png">Edge load by zone</a></li><li><a href="scenarios/manufacturing_agv/figures/03_budget_violation_timeline.png">Budget violation timeline</a></li><li><a href="bottleneck_attribution.json">Bottleneck attribution JSON</a></li></ul></section>
+<section class="card"><div class="eyebrow">Secondary portability</div><h3>Pharma scenario</h3><p>Secondary portability scenario, not the headline use case. It shows the same pipeline shape on a seeded bioreactor anomaly simulation; it does not use real pharmaceutical plant telemetry.</p><span class="metric">lead time: 5 min</span><span class="metric">precision: 1.00</span><ul><li><a href="business_cases/pharma_bioreactor_anomaly.md">Business case</a></li><li><a href="scenarios/pharma_bioreactor/dashboard_summary.md">Scenario summary</a></li><li><a href="scenarios/pharma_bioreactor/scenario_metrics.json">Scenario metrics</a></li></ul></section>
+<section class="card"><div class="eyebrow">Pipeline evidence</div><h3>Schema validation, quarantine, deterministic generation</h3><p>The telemetry layer validates schema, fails soft into quarantine for bad rows, and regenerates deterministic seeded artifacts through the same static report flow.</p><ul><li><a href="../docs/ARCHITECTURE.md">Architecture</a></li><li><a href="sample_pipeline_report.md">Sample pipeline report</a></li><li><a href="../tests/">Tests</a></li><li><a href="../Makefile">Makefile verification</a></li></ul></section>
+<section class="card"><div class="eyebrow">Benchmarks and CI</div><h3>Performance and reproducibility proof</h3><p>Benchmarks focus on telemetry-pipeline evidence: ingest throughput, quarantine throughput, end-to-end regeneration time, and deterministic artifact hashes.</p><ul><li><a href="benchmarks.md">Benchmarks</a></li><li><a href="benchmarks.json">Raw benchmark JSON</a></li><li><a href="../.github/workflows/ci.yml">CI workflow</a></li></ul></section>
+<section class="card"><div class="eyebrow">Boundaries</div><h3>What this project does not claim</h3><p>No live private 5G network, no vendor RAN integration, no MES/SCADA/PLC connector, no safety certification, no production runtime claim, and no real AGV fleet telemetry.</p><ul><li><a href="operator_console_readiness.json">Operator console readiness</a></li><li><a href="../README.md">README boundary</a></li></ul></section>
+<section class="card"><div class="eyebrow">Business case</div><h3>Capacity decision brief</h3><p>A direct business-case note for the practical decision: avoid unsafe AGV expansion, avoid buying the wrong capacity layer first, and validate headroom with live telemetry before deployment.</p><ul><li><a href="../BUSINESS_CASE.md">BUSINESS_CASE.md</a></li></ul></section>
+<section class="card"><div class="eyebrow">Start here</div><h3>One-page brief</h3><p>Both buyer stories side-by-side, the answers, the sensitivity, what I tested, and what I did not claim. Five minutes to read for an engineering leader or executive who wants the shape of the work before going deeper.</p><ul><li><a href="../TECH_BRIEF.md">TECH_BRIEF.md</a></li><li><a href="../README.md">README.md</a></li><li><a href="../HOWTO.md">HOWTO.md</a></li></ul></section>
+    </div>
+<section class="boundary"><h3>Evidence vs Boundary</h3><div class="grid"><div><strong>Evidence demonstrated</strong><ul><li>seeded AGV fleet simulation</li><li>worst-cell p95 latency budget check</li><li>edge GPU saturation signal</li><li>schema validation and quarantine behavior</li><li>deterministic regeneration</li><li>benchmark and CI validation</li></ul></div><div><strong>Boundary preserved</strong><ul><li>no live private 5G network</li><li>no vendor RAN integration</li><li>no MES/SCADA/PLC connector</li><li>no production deployment claim</li><li>no safety certification claim</li><li>no real AGV fleet telemetry</li></ul></div></div></section>    <div class="boundary">
+      <h3>What I tested, what I didn't</h3>
+      <p>Every number on this page comes from a seeded simulation. I didn't connect to a live private 5G network, vendor RAN, vendor edge-AI platform, MES, SCADA, PLC, or a real AGV fleet. What's portable is the schema, the scenario pattern, and the way the capacity answer comes with its sensitivity story attached.</p>
+    </div>
+    <div class="footer">
+      Source: <a href="https://github.com/obiedeh/private-5g-edge-telemetry">github.com/obiedeh/private-5g-edge-telemetry</a>
+    </div>
+  </div>
+</body>
+</html>

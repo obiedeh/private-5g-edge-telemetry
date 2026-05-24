@@ -1,0 +1,37 @@
+[
+  {
+    "action": "Cap expansion at 100 AGVs",
+    "boundary": "Seeded simulation, not production approval.",
+    "evidence": "100 AGVs = 18.39 ms p95.",
+    "priority": "P0",
+    "why": "Last tested fleet size under the 20 ms p95 budget."
+  },
+  {
+    "action": "Validate with live RAN + edge GPU telemetry",
+    "boundary": "Required before any real deployment decision.",
+    "evidence": "Boundary section and readiness checklist.",
+    "priority": "P0",
+    "why": "Current evidence is generated from seeded scenarios."
+  },
+  {
+    "action": "Rebalance assembly-zone AGV routing/load",
+    "boundary": "Validate against real routing and factory layout.",
+    "evidence": "42% assembly fleet share.",
+    "priority": "P1",
+    "why": "Assembly zone carries the heaviest load and saturates first."
+  },
+  {
+    "action": "Reserve or add edge GPU capacity before testing 120 AGVs",
+    "boundary": "Confirm with live GPU utilization and queueing telemetry.",
+    "evidence": "120 AGVs crosses 23.40 ms p95.",
+    "priority": "P1",
+    "why": "Edge inference pool appears to be the limiting layer."
+  },
+  {
+    "action": "Re-run scenario at 15 ms, 20 ms, and 25 ms budgets",
+    "boundary": "Budget choice must come from actual control-loop requirements.",
+    "evidence": "15 ms = 80 AGVs, 20 ms = 100 AGVs, 25 ms = 120 AGVs",
+    "priority": "P1",
+    "why": "Control-loop deadline changes the allowable fleet size."
+  }
+]

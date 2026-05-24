@@ -1,0 +1,42 @@
+[
+  {
+    "candidate": "Edge GPU pool",
+    "evidence": "Assembly zone hits the saturation knee first and carries 42% of the fleet.",
+    "finding": "Assembly-zone edge GPU saturation appears first in the seeded simulation.",
+    "implication": "Reserve or add edge GPU capacity before testing 120 AGVs.",
+    "status_at_safe": "0.52 mean load at 100 AGVs",
+    "status_at_unsafe": "0.60 mean load at 120 AGVs"
+  },
+  {
+    "candidate": "Radio / private 5G layer",
+    "evidence": "The latency break is tied to edge GPU pressure and worst-cell p95 behavior, not a proven radio-only failure.",
+    "finding": "Not shown as the first bottleneck in this seeded simulation.",
+    "implication": "Do not assume radio-capacity spend is the first fix.",
+    "status_at_safe": "not identified as first bottleneck",
+    "status_at_unsafe": "not identified as first bottleneck"
+  },
+  {
+    "candidate": "Zone-level fleet distribution",
+    "evidence": "42% assembly, 34% paint, 24% warehouse.",
+    "finding": "Assembly carries the heaviest load.",
+    "implication": "Rebalance routing or workload before expanding fleet size.",
+    "status_at_safe": "assembly zone is the pressure zone",
+    "status_at_unsafe": "assembly zone remains the pressure zone"
+  },
+  {
+    "candidate": "Worst-cell latency budget",
+    "evidence": "18.39 ms at 100 AGVs and 23.40 ms at 120 AGVs.",
+    "finding": "100 AGVs remains under the 20 ms p95 budget, while 120 AGVs crosses it.",
+    "implication": "Keep the simulated ceiling at 100 AGVs until validated.",
+    "status_at_safe": "18.39 ms at 100 AGVs",
+    "status_at_unsafe": "23.40 ms at 120 AGVs"
+  },
+  {
+    "candidate": "Data pipeline health",
+    "evidence": "Schema validation, quarantine path, benchmarks, deterministic regeneration, tests/CI.",
+    "finding": "Evidence path is reproducible and tested.",
+    "implication": "The analysis is reproducible, but it is still not live production telemetry.",
+    "status_at_safe": "deterministic benchmarks present",
+    "status_at_unsafe": "deterministic benchmarks present"
+  }
+]

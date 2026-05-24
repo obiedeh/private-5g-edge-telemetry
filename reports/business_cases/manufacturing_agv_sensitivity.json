@@ -1,0 +1,71 @@
+{
+  "budget_sensitivity": [
+    {
+      "latency_budget_ms": 15.0,
+      "max_fleet_under_budget": 80
+    },
+    {
+      "latency_budget_ms": 20.0,
+      "max_fleet_under_budget": 100
+    },
+    {
+      "latency_budget_ms": 25.0,
+      "max_fleet_under_budget": 120
+    }
+  ],
+  "fine_grained_fleet_search": [
+    {
+      "budget_violated": false,
+      "fleet_size": 80,
+      "worst_cell_p95_latency_ms": 13.764
+    },
+    {
+      "budget_violated": false,
+      "fleet_size": 90,
+      "worst_cell_p95_latency_ms": 16.542
+    },
+    {
+      "budget_violated": false,
+      "fleet_size": 95,
+      "worst_cell_p95_latency_ms": 17.597
+    },
+    {
+      "budget_violated": false,
+      "fleet_size": 100,
+      "worst_cell_p95_latency_ms": 19.962
+    },
+    {
+      "budget_violated": true,
+      "fleet_size": 105,
+      "worst_cell_p95_latency_ms": 20.65
+    },
+    {
+      "budget_violated": true,
+      "fleet_size": 110,
+      "worst_cell_p95_latency_ms": 21.822
+    },
+    {
+      "budget_violated": true,
+      "fleet_size": 120,
+      "worst_cell_p95_latency_ms": 23.144
+    }
+  ],
+  "seed_sensitivity": [
+    {
+      "max_fleet_under_budget": 100,
+      "seed": 42
+    },
+    {
+      "max_fleet_under_budget": 100,
+      "seed": 7
+    },
+    {
+      "max_fleet_under_budget": 100,
+      "seed": 17
+    },
+    {
+      "max_fleet_under_budget": 100,
+      "seed": 99
+    }
+  ]
+}

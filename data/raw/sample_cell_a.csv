@@ -1,0 +1,3 @@
+timestamp,cell_id,slice_type,prb_utilization_dl,prb_utilization_ul,sinr_db,rsrp_dbm,latency_ms,throughput_mbps,ue_count,qos_class_id,edge_inference_load,band,arfcn,pci,handover_count,drop_rate,ta,jitter_ms,cell_state
+2025-01-01T00:00:00,cell_001,eMBB,0.56,0.31,18.2,-89.1,12.4,104.3,11,9,0.22,78,632000,17,2,0.01,18,5.4,healthy
+2025-01-01T00:05:00,cell_001,URLLC,0.22,0.18,21.4,-87.5,5.1,43.2,7,7,0.18,78,632000,17,1,0.01,17,4.2,healthy

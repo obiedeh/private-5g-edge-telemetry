@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "private-5g-edge-telemetry"
+version = "0.1.0"
+description = "Simulation-first private 5G telemetry infrastructure for AI-RAN, edge AI, and observability workflows."
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26.0",
+  "pandas>=2.0.0",
+  "matplotlib>=3.7.0",
+  "pyarrow>=12.0.0",
+  "pyyaml>=6.0",
+]
+
+[project.scripts]
+private5g-ran-pipeline = "private5g_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["private5g_pipeline*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_return_any = true
+
+[tool.ruff]
+target-version = "py311"
+extend-exclude = ["*.ipynb"]

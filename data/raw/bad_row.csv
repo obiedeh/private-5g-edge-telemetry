@@ -1,0 +1,2 @@
+timestamp,cell_id,slice_type,prb_utilization_dl,prb_utilization_ul,sinr_db,rsrp_dbm,latency_ms,throughput_mbps,ue_count,qos_class_id,edge_inference_load,band,arfcn,pci,handover_count,drop_rate,ta,jitter_ms,cell_state
+not-a-timestamp,bad_cell,eMBB,1.4,-0.1,99,-200,-5,99999,not-an-int,9,1.7,999,999999,999,999,1.7,999,999,broken

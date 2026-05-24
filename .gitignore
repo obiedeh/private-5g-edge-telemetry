@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+*.ipynb_checkpoints
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+data/*
+!data/.gitkeep
+!data/sample_telemetry.csv
+!data/raw/
+models/*
+mlruns/
+dist/
+*.egg-info/
+
+# Reports: commit the deterministic evidence bundles (scenarios, business
+# cases, portal). Ignore ad-hoc / per-developer runs only.
+reports/runs/
+reports/_local/

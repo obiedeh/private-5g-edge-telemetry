@@ -1,0 +1,35 @@
+{
+  "determinism": {
+    "both_deterministic": true,
+    "manufacturing_matches": true,
+    "manufacturing_run_a_hash": "1b0610d91c3f780908c7eb217a433b6cecc69492f7ad80afc42e4fd988fdedb8",
+    "manufacturing_run_b_hash": "1b0610d91c3f780908c7eb217a433b6cecc69492f7ad80afc42e4fd988fdedb8",
+    "pharma_matches": true,
+    "pharma_run_a_hash": "93cd5fd156b91e6e50213c2276c8694030fbd141275af1fad14c66610f46f953",
+    "pharma_run_b_hash": "93cd5fd156b91e6e50213c2276c8694030fbd141275af1fad14c66610f46f953"
+  },
+  "ingest": {
+    "elapsed_seconds": 4.132,
+    "n_cells": 25,
+    "n_hours": 48,
+    "rows_generated": 43200,
+    "rows_per_second": 10455
+  },
+  "quarantine": {
+    "corruption_rate_pct": 5.0,
+    "elapsed_seconds": 0.051,
+    "rejected_pct": 5.0,
+    "rejected_rows": 432,
+    "rows_per_second": 168237,
+    "total_rows": 8640,
+    "valid_rows": 8208
+  },
+  "wallclock": {
+    "manufacturing_business_case_seconds": 8.408,
+    "manufacturing_scenario_seconds": 0.901,
+    "pharma_business_case_seconds": 5.514,
+    "pharma_scenario_seconds": 1.295,
+    "portal_seconds": 0.006,
+    "total_seconds": 16.124
+  }
+}

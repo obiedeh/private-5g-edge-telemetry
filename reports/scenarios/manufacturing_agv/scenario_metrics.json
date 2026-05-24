@@ -1,0 +1,86 @@
+{
+  "boundary": "Planning estimate from a simulated GPU+latency profile. Not a measurement of any specific factory or vendor edge platform.",
+  "fleet_sweep": [
+    20,
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    160
+  ],
+  "latency_budget_ms": 20.0,
+  "max_fleet_under_budget": 100,
+  "n_cells": 3,
+  "question": "Can the factory handle N more AGVs without violating the 20 ms vision control-loop latency budget?",
+  "samples_per_fleet_size_per_cell": 12,
+  "seed": 42,
+  "summary": [
+    {
+      "budget_violated": false,
+      "fleet_size": 20,
+      "mean_drop_rate": 0.00416,
+      "mean_edge_inference_load": 0.272,
+      "mean_p95_latency_ms": 7.085,
+      "worst_cell_p95_latency_ms": 7.616
+    },
+    {
+      "budget_violated": false,
+      "fleet_size": 40,
+      "mean_drop_rate": 0.00602,
+      "mean_edge_inference_load": 0.335,
+      "mean_p95_latency_ms": 7.282,
+      "worst_cell_p95_latency_ms": 7.527
+    },
+    {
+      "budget_violated": false,
+      "fleet_size": 60,
+      "mean_drop_rate": 0.00554,
+      "mean_edge_inference_load": 0.397,
+      "mean_p95_latency_ms": 8.097,
+      "worst_cell_p95_latency_ms": 9.286
+    },
+    {
+      "budget_violated": false,
+      "fleet_size": 80,
+      "mean_drop_rate": 0.00527,
+      "mean_edge_inference_load": 0.463,
+      "mean_p95_latency_ms": 10.673,
+      "worst_cell_p95_latency_ms": 14.563
+    },
+    {
+      "budget_violated": false,
+      "fleet_size": 100,
+      "mean_drop_rate": 0.00484,
+      "mean_edge_inference_load": 0.524,
+      "mean_p95_latency_ms": 14.173,
+      "worst_cell_p95_latency_ms": 18.39
+    },
+    {
+      "budget_violated": true,
+      "fleet_size": 120,
+      "mean_drop_rate": 0.00665,
+      "mean_edge_inference_load": 0.6,
+      "mean_p95_latency_ms": 18.474,
+      "worst_cell_p95_latency_ms": 23.398
+    },
+    {
+      "budget_violated": true,
+      "fleet_size": 140,
+      "mean_drop_rate": 0.00469,
+      "mean_edge_inference_load": 0.672,
+      "mean_p95_latency_ms": 22.181,
+      "worst_cell_p95_latency_ms": 27.781
+    },
+    {
+      "budget_violated": true,
+      "fleet_size": 160,
+      "mean_drop_rate": 0.00632,
+      "mean_edge_inference_load": 0.727,
+      "mean_p95_latency_ms": 24.815,
+      "worst_cell_p95_latency_ms": 31.514
+    }
+  ],
+  "vertical": "manufacturing_agv"
+}

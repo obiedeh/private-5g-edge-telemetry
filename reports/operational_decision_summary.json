@@ -1,0 +1,9 @@
+{
+  "binding_bottleneck": "Assembly-zone edge GPU saturation appears first in this seeded simulation.",
+  "control_loop_budget_ms": 20.0,
+  "decision_basis": "seeded simulation + generated plots + budget sensitivity + multi-seed stability",
+  "first_tested_unsafe_expansion_point_agvs": 120,
+  "operator_recommendation": "Cap expansion at 100 AGVs until live telemetry validates headroom.",
+  "primary_metric": "worst-cell hourly p95 latency",
+  "recommended_fleet_ceiling_agvs": 100
+}
