@@ -223,3 +223,10 @@ The four together cover PHY → operational → vertical for private-5G + AI wor
 ## License
 
 MIT.
+
+## Project history
+
+Formerly **`private-5g-data-pipeline`**. Renamed and re-published as a squashed evidence pack on 2026-05-24. Of the 106 files, 92 are byte-identical to the previous version; the 14 that differ carry the renamed URLs and an added validation snapshot.
+
+The pre-rename development history is not in this repository; it is kept
+offline in the superseded working copy (see that repo's README).
