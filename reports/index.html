@@ -6,20 +6,20 @@
   <title>Private 5G Edge-AI Capacity Console</title>
   <style>
 :root {
-  --bg: #f6f7f3;
-  --panel: #ffffff;
-  --line: #d8dbd2;
-  --text: #1a1c1e;
-  --muted: #5d6459;
-  --blue: #1f6fd1;
-  --red: #c62828;
+  --bg: #202224;
+  --panel: #181b1d;
+  --line: #393d3f;
+  --text: #eef1e8;
+  --muted: #a3aa9c;
+  --blue: #68b7ff;
+  --red: #ff7a6b;
 }
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--text);
   background:
-    linear-gradient(180deg, rgba(31, 111, 209, 0.10), rgba(248, 250, 252, 0.0) 240px),
+    linear-gradient(180deg, rgba(104, 183, 255, 0.07), rgba(32, 34, 36, 0.0) 240px),
     var(--bg);
 }
 .wrap { max-width: 1400px; margin: 0 auto; padding: 28px; }
@@ -42,7 +42,7 @@ h1 { margin: 0 0 8px; font-size: 34px; }
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 18px 20px;
-  box-shadow: 0 1px 2px rgba(26, 28, 30, 0.04);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .eyebrow {
   color: var(--blue);
@@ -63,7 +63,7 @@ h1 { margin: 0 0 8px; font-size: 34px; }
 .plot-card a.source { display: inline-block; margin-top: 4px; font-size: 13px; }
 .metric {
   display: inline-block;
-  background: rgba(31, 111, 209, 0.08);
+  background: rgba(104, 183, 255, 0.10);
   color: var(--blue);
   padding: 2px 8px;
   border-radius: 6px;
@@ -71,7 +71,7 @@ h1 { margin: 0 0 8px; font-size: 34px; }
   font-size: 13px;
   margin-right: 6px;
 }
-.metric.warn { background: rgba(192, 74, 74, 0.10); color: var(--red); }
+.metric.warn { background: rgba(255, 122, 107, 0.12); color: var(--red); }
 ul { padding-left: 18px; margin: 6px 0 0; }
 li { margin: 6px 0; }
 .thumbs {
@@ -108,7 +108,7 @@ a:hover { text-decoration: underline; }
   .visual-grid { grid-template-columns: 1fr; }
 }
 </style>
-<style id="ee-theme">:root{color-scheme:light}h1,h2,h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;letter-spacing:-.02em}h1{letter-spacing:-.035em}
+<style id="ee-theme">:root{color-scheme:dark}h1,h2,h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;letter-spacing:-.02em}h1{letter-spacing:-.035em}body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:clamp(44px,4.6vw,66px)!important;font-weight:500!important;line-height:1!important;letter-spacing:-.06em!important;text-transform:none!important;font-stretch:normal!important}h1 em,h1 .ee-g{font-style:normal;color:#b7f34a!important;-webkit-text-fill-color:#b7f34a}h1 em.b,h1 .ee-b{font-style:normal;color:#68b7ff!important;-webkit-text-fill-color:#68b7ff}h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:clamp(28px,3.2vw,42px)!important;font-weight:500!important;line-height:1.08!important;letter-spacing:-.04em!important;text-transform:none!important;font-stretch:normal!important;color:inherit}h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:19px!important;font-weight:600!important;line-height:1.25!important;letter-spacing:-.02em!important;text-transform:none!important;font-stretch:normal!important}.ee-eyebrow{font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace!important;font-size:12px!important;font-weight:600!important;letter-spacing:.08em!important;text-transform:uppercase!important;line-height:1.4!important;color:#b7f34a!important}.eyebrow{font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace!important;font-size:12px!important;font-weight:600!important;letter-spacing:.08em!important;text-transform:uppercase!important;line-height:1.4!important;color:#68b7ff!important}
 body{margin:0}
 .ee-band{background:#181b1d;border-bottom:1px solid #393d3f;color:#eef1e8;font:14px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;position:relative;z-index:50}
 .ee-band .ee-in{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
@@ -122,7 +122,7 @@ body{margin:0}
 </style></head>
 <body><div class="ee-band"><div class="ee-in"><a class="ee-mark" href="https://embodiededge.ai"><i></i>EmbodiedEdge <span>Labs · Evidence</span></a><nav><a href="https://github.com/obiedeh/private-5g-edge-telemetry">Repository</a><a href="https://embodiededge.ai">Lab</a><a href="https://github.com/obiedeh">Obinna Edeh</a></nav></div></div>
   <div class="wrap">
-    <h1>Private 5G Edge-AI Capacity Console</h1>
+    <div class="ee-eyebrow">Edge telemetry · Simulation evidence</div><h1>Private 5G <span class="ee-g">Edge-AI</span> <span class="ee-b">Capacity Console</span></h1>
     <div class="sub">
       I built a reproducible telemetry system to test when AGV fleet growth breaks a 20 ms control-loop budget.
     </div>

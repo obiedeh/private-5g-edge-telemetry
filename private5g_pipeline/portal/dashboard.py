@@ -22,6 +22,10 @@ from private5g_pipeline.portal.ee_theme import apply_theme
 
 logger = logging.getLogger(__name__)
 
+TYPESET = {"eyebrow": ".ee-eyebrow", "kicker": "section > h2", "title2": "section > h3", "title3": ".card > h3",
+           "accents": [("Edge-AI", "g"), ("Capacity Console", "b")],
+           "eyebrow_text": "Edge telemetry · Simulation evidence"}
+
 DEFAULT_OUTPUT_PATH = "reports/dashboard.html"
 
 _MANUFACTURING_METRICS = "reports/scenarios/manufacturing_agv/scenario_metrics.json"
@@ -35,19 +39,19 @@ _BENCHMARKS_PATH = "reports/benchmarks.json"
 
 _STYLE = """
 :root {
-  --bg: #f0f1ec;
-  --panel: #ffffff;
-  --line: #c6cabf;
-  --text: #1a1c1e;
-  --muted: #5d6459;
-  --blue: #1a5fb4;
-  --blue-soft: #e3eefb;
-  --amber: #c2560c;
-  --amber-soft: #fcecdf;
-  --red: #c62828;
-  --red-soft: #fbe4e1;
-  --green: #4d7c0f;
-  --green-soft: #ecf5dc;
+  --bg: #202224;
+  --panel: #181b1d;
+  --line: #4a4f52;
+  --text: #eef1e8;
+  --muted: #a3aa9c;
+  --blue: #68b7ff;
+  --blue-soft: #18283a;
+  --amber: #ff9c59;
+  --amber-soft: #33251b;
+  --red: #ff7a6b;
+  --red-soft: #3a1f1d;
+  --green: #b7f34a;
+  --green-soft: #27321a;
 }
 body {
   margin: 0;
@@ -70,7 +74,7 @@ section {
   border-radius: 14px;
   padding: 28px;
   margin-bottom: 22px;
-  box-shadow: 0 1px 3px rgba(26, 28, 30, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 section h2 {
   margin: 0 0 4px;
@@ -170,7 +174,7 @@ section p { margin: 0 0 14px; }
 .badge.warn { background: var(--amber-soft); color: var(--amber); }
 .badge.risk { background: var(--red-soft); color: var(--red); }
 .callout {
-  background: #f6f7f3;
+  background: #202224;
   border: 1px solid var(--line);
   border-left: 4px solid var(--blue);
   border-radius: 8px;
@@ -992,7 +996,7 @@ def generate_dashboard(
         "</html>\n"
     )
 
-    html = apply_theme(html, repo_url="https://github.com/obiedeh/private-5g-edge-telemetry", dark={}, root_selectors=":root", force_dark=False, scheme="light")
+    html = apply_theme(html, repo_url="https://github.com/obiedeh/private-5g-edge-telemetry", dark={}, root_selectors=":root", force_dark=False, scheme="dark", typeset=TYPESET)
     out = Path(output_path)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
