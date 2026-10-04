@@ -18,6 +18,8 @@ import logging
 from pathlib import Path
 from typing import Any, cast
 
+from private5g_pipeline.portal.ee_theme import apply_theme
+
 logger = logging.getLogger(__name__)
 
 DEFAULT_OUTPUT_PATH = "reports/dashboard.html"
@@ -33,23 +35,23 @@ _BENCHMARKS_PATH = "reports/benchmarks.json"
 
 _STYLE = """
 :root {
-  --bg: #f1f5f9;
+  --bg: #f0f1ec;
   --panel: #ffffff;
-  --line: #cbd5e1;
-  --text: #0f172a;
-  --muted: #64748b;
-  --blue: #1d4ed8;
-  --blue-soft: #dbeafe;
-  --amber: #b45309;
-  --amber-soft: #fef3c7;
-  --red: #b91c1c;
-  --red-soft: #fee2e2;
-  --green: #047857;
-  --green-soft: #d1fae5;
+  --line: #c6cabf;
+  --text: #1a1c1e;
+  --muted: #5d6459;
+  --blue: #1a5fb4;
+  --blue-soft: #e3eefb;
+  --amber: #c2560c;
+  --amber-soft: #fcecdf;
+  --red: #c62828;
+  --red-soft: #fbe4e1;
+  --green: #4d7c0f;
+  --green-soft: #ecf5dc;
 }
 body {
   margin: 0;
-  font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.5;
@@ -68,7 +70,7 @@ section {
   border-radius: 14px;
   padding: 28px;
   margin-bottom: 22px;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(26, 28, 30, 0.05);
 }
 section h2 {
   margin: 0 0 4px;
@@ -168,7 +170,7 @@ section p { margin: 0 0 14px; }
 .badge.warn { background: var(--amber-soft); color: var(--amber); }
 .badge.risk { background: var(--red-soft); color: var(--red); }
 .callout {
-  background: #f8fafc;
+  background: #f6f7f3;
   border: 1px solid var(--line);
   border-left: 4px solid var(--blue);
   border-radius: 8px;
@@ -990,6 +992,7 @@ def generate_dashboard(
         "</html>\n"
     )
 
+    html = apply_theme(html, repo_url="https://github.com/obiedeh/private-5g-edge-telemetry", dark={}, root_selectors=":root", force_dark=False, scheme="light")
     out = Path(output_path)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")

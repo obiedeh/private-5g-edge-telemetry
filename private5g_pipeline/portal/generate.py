@@ -20,6 +20,8 @@ import logging
 from pathlib import Path
 from typing import Any
 
+from private5g_pipeline.portal.ee_theme import apply_theme
+
 logger = logging.getLogger(__name__)
 
 DEFAULT_OUTPUT_PATH = "reports/index.html"
@@ -34,20 +36,20 @@ _PHARMA_SENSITIVITY = "reports/business_cases/pharma_bioreactor_sensitivity.json
 
 _STYLE = """
 :root {
-  --bg: #f8fafc;
+  --bg: #f6f7f3;
   --panel: #ffffff;
-  --line: #dbe4ee;
-  --text: #0f172a;
-  --muted: #64748b;
-  --blue: #2563eb;
-  --red: #c04a4a;
+  --line: #d8dbd2;
+  --text: #1a1c1e;
+  --muted: #5d6459;
+  --blue: #1f6fd1;
+  --red: #c62828;
 }
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--text);
   background:
-    linear-gradient(180deg, rgba(37, 99, 235, 0.10), rgba(248, 250, 252, 0.0) 240px),
+    linear-gradient(180deg, rgba(31, 111, 209, 0.10), rgba(248, 250, 252, 0.0) 240px),
     var(--bg);
 }
 .wrap { max-width: 1400px; margin: 0 auto; padding: 28px; }
@@ -70,7 +72,7 @@ h1 { margin: 0 0 8px; font-size: 34px; }
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 18px 20px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 1px 2px rgba(26, 28, 30, 0.04);
 }
 .eyebrow {
   color: var(--blue);
@@ -91,7 +93,7 @@ h1 { margin: 0 0 8px; font-size: 34px; }
 .plot-card a.source { display: inline-block; margin-top: 4px; font-size: 13px; }
 .metric {
   display: inline-block;
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(31, 111, 209, 0.08);
   color: var(--blue);
   padding: 2px 8px;
   border-radius: 6px;
@@ -783,6 +785,7 @@ def generate_portal(
         "</html>\n"
     )
 
+    html = apply_theme(html, repo_url="https://github.com/obiedeh/private-5g-edge-telemetry", dark={}, root_selectors=":root", force_dark=False, scheme="light")
     out = Path(output_path)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")

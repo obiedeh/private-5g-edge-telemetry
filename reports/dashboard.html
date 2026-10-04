@@ -6,23 +6,23 @@
   <title>Private 5G Edge-AI Capacity Console</title>
   <style>
 :root {
-  --bg: #f1f5f9;
+  --bg: #f0f1ec;
   --panel: #ffffff;
-  --line: #cbd5e1;
-  --text: #0f172a;
-  --muted: #64748b;
-  --blue: #1d4ed8;
-  --blue-soft: #dbeafe;
-  --amber: #b45309;
-  --amber-soft: #fef3c7;
-  --red: #b91c1c;
-  --red-soft: #fee2e2;
-  --green: #047857;
-  --green-soft: #d1fae5;
+  --line: #c6cabf;
+  --text: #1a1c1e;
+  --muted: #5d6459;
+  --blue: #1a5fb4;
+  --blue-soft: #e3eefb;
+  --amber: #c2560c;
+  --amber-soft: #fcecdf;
+  --red: #c62828;
+  --red-soft: #fbe4e1;
+  --green: #4d7c0f;
+  --green-soft: #ecf5dc;
 }
 body {
   margin: 0;
-  font-family: 'Segoe UI', system-ui, Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.5;
@@ -41,7 +41,7 @@ section {
   border-radius: 14px;
   padding: 28px;
   margin-bottom: 22px;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(26, 28, 30, 0.05);
 }
 section h2 {
   margin: 0 0 4px;
@@ -141,7 +141,7 @@ section p { margin: 0 0 14px; }
 .badge.warn { background: var(--amber-soft); color: var(--amber); }
 .badge.risk { background: var(--red-soft); color: var(--red); }
 .callout {
-  background: #f8fafc;
+  background: #f6f7f3;
   border: 1px solid var(--line);
   border-left: 4px solid var(--blue);
   border-radius: 8px;
@@ -231,8 +231,19 @@ footer a:hover { text-decoration: underline; }
   .bignum .stat { min-width: 130px; }
 }
 </style>
-</head>
-<body>
+<style id="ee-theme">:root{color-scheme:light}h1,h2,h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;letter-spacing:-.02em}h1{letter-spacing:-.035em}
+body{margin:0}
+.ee-band{background:#181b1d;border-bottom:1px solid #393d3f;color:#eef1e8;font:14px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;position:relative;z-index:50}
+.ee-band .ee-in{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
+.ee-band a{color:#a3aa9c;text-decoration:none}.ee-band a:hover{color:#eef1e8}
+.ee-band .ee-mark{display:inline-flex;align-items:center;gap:8px;color:#eef1e8;font-weight:600;letter-spacing:-.01em}
+.ee-band .ee-mark i{display:inline-block;width:14px;height:14px;border-radius:2px;background:linear-gradient(135deg,#b7f34a 0 50%,#68b7ff 50% 100%)}
+.ee-band .ee-mark span{color:#a3aa9c;font-weight:400}.ee-band nav{display:flex;gap:16px}
+.ee-foot{border-top:1px solid #393d3f;background:#181b1d;color:#7c8378;font:13px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif}
+.ee-foot .ee-in{max-width:1120px;margin:0 auto;padding:14px 20px}.ee-foot a{color:#a3aa9c}
+@media print{.ee-band,.ee-foot{background:#fff;color:#5d6459;border-color:#d8dbd2}.ee-band .ee-mark{color:#1a1c1e}}
+</style></head>
+<body><div class="ee-band"><div class="ee-in"><a class="ee-mark" href="https://embodiededge.ai"><i></i>EmbodiedEdge <span>Labs · Evidence</span></a><nav><a href="https://github.com/obiedeh/private-5g-edge-telemetry">Repository</a><a href="https://embodiededge.ai">Lab</a><a href="https://github.com/obiedeh">Obinna Edeh</a></nav></div></div>
 <div class="wrap">
 <header>
   <h1>Private 5G Edge-AI Capacity Console</h1>
@@ -280,5 +291,5 @@ footer a:hover { text-decoration: underline; }
 <tr><td class='right'>17</td><td>yes</td><td class='right'>5 min</td><td class='right'>1.00</td></tr>
 <tr><td class='right'>99</td><td>yes</td><td class='right'>5 min</td><td class='right'>1.00</td></tr></tbody></table><p style='margin-top: 18px;'><a href="business_cases/pharma_bioreactor_anomaly.md">Full business case (threshold + seed sensitivity) →</a></p></section><section><h2>Measured pipeline benchmarks</h2><h3>Not FPS. What's actually meaningful for a telemetry layer.</h3><p>This isn't an inference workload, so FPS and GPU utilisation would be staged. The benchmarks that <em>are</em> meaningful for a telemetry-intelligence layer: ingest throughput, schema-quarantine throughput under corrupted input, end-to-end regeneration wall-clock, and determinism. All measured.</p><div class="bignum"><div class="stat"><div class="label">Ingest</div><div class="value">10,455</div><div style="font-size: 11px; color: var(--muted); margin-top: 2px;">rows / sec</div></div><div class="stat"><div class="label">Quarantine</div><div class="value">168,237</div><div style="font-size: 11px; color: var(--muted); margin-top: 2px;">rows / sec @ 5% corruption</div></div><div class="stat"><div class="label">Regeneration</div><div class="value">16.1s</div><div style="font-size: 11px; color: var(--muted); margin-top: 2px;">both scenarios + cases + portal</div></div><div class="stat green"><div class="label">Determinism</div><div class="value" style="font-size: 22px;">byte-identical</div><div style="font-size: 11px; color: var(--muted); margin-top: 2px;">SHA-256, two runs at seed 42</div></div></div><p style='margin-top: 18px;'><a href="benchmarks.md">Full methodology + stage breakdown →</a></p></section><div class="boundary"><h4>What I tested, what I didn't</h4><p>Every number on this page comes from a seeded simulation. I didn't connect to a live private 5G network, vendor RAN, vendor edge-AI platform, MES, SCADA, PLC, or a real AGV fleet. What's portable is the shape — the schema, the scenario pattern, the way each answer comes with its sensitivity story attached.</p></div><footer>Source: <a href="https://github.com/obiedeh/private-5g-edge-telemetry">github.com/obiedeh/private-5g-edge-telemetry</a></footer>
 </div>
-</body>
+<div class="ee-foot"><div class="ee-in">An <a href="https://embodiededge.ai">EmbodiedEdge Labs</a> project. Measured on real hardware, published as found.</div></div></body>
 </html>

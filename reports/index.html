@@ -6,20 +6,20 @@
   <title>Private 5G Edge-AI Capacity Console</title>
   <style>
 :root {
-  --bg: #f8fafc;
+  --bg: #f6f7f3;
   --panel: #ffffff;
-  --line: #dbe4ee;
-  --text: #0f172a;
-  --muted: #64748b;
-  --blue: #2563eb;
-  --red: #c04a4a;
+  --line: #d8dbd2;
+  --text: #1a1c1e;
+  --muted: #5d6459;
+  --blue: #1f6fd1;
+  --red: #c62828;
 }
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--text);
   background:
-    linear-gradient(180deg, rgba(37, 99, 235, 0.10), rgba(248, 250, 252, 0.0) 240px),
+    linear-gradient(180deg, rgba(31, 111, 209, 0.10), rgba(248, 250, 252, 0.0) 240px),
     var(--bg);
 }
 .wrap { max-width: 1400px; margin: 0 auto; padding: 28px; }
@@ -42,7 +42,7 @@ h1 { margin: 0 0 8px; font-size: 34px; }
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 18px 20px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 1px 2px rgba(26, 28, 30, 0.04);
 }
 .eyebrow {
   color: var(--blue);
@@ -63,7 +63,7 @@ h1 { margin: 0 0 8px; font-size: 34px; }
 .plot-card a.source { display: inline-block; margin-top: 4px; font-size: 13px; }
 .metric {
   display: inline-block;
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(31, 111, 209, 0.08);
   color: var(--blue);
   padding: 2px 8px;
   border-radius: 6px;
@@ -108,8 +108,19 @@ a:hover { text-decoration: underline; }
   .visual-grid { grid-template-columns: 1fr; }
 }
 </style>
-</head>
-<body>
+<style id="ee-theme">:root{color-scheme:light}h1,h2,h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;letter-spacing:-.02em}h1{letter-spacing:-.035em}
+body{margin:0}
+.ee-band{background:#181b1d;border-bottom:1px solid #393d3f;color:#eef1e8;font:14px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;position:relative;z-index:50}
+.ee-band .ee-in{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
+.ee-band a{color:#a3aa9c;text-decoration:none}.ee-band a:hover{color:#eef1e8}
+.ee-band .ee-mark{display:inline-flex;align-items:center;gap:8px;color:#eef1e8;font-weight:600;letter-spacing:-.01em}
+.ee-band .ee-mark i{display:inline-block;width:14px;height:14px;border-radius:2px;background:linear-gradient(135deg,#b7f34a 0 50%,#68b7ff 50% 100%)}
+.ee-band .ee-mark span{color:#a3aa9c;font-weight:400}.ee-band nav{display:flex;gap:16px}
+.ee-foot{border-top:1px solid #393d3f;background:#181b1d;color:#7c8378;font:13px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif}
+.ee-foot .ee-in{max-width:1120px;margin:0 auto;padding:14px 20px}.ee-foot a{color:#a3aa9c}
+@media print{.ee-band,.ee-foot{background:#fff;color:#5d6459;border-color:#d8dbd2}.ee-band .ee-mark{color:#1a1c1e}}
+</style></head>
+<body><div class="ee-band"><div class="ee-in"><a class="ee-mark" href="https://embodiededge.ai"><i></i>EmbodiedEdge <span>Labs · Evidence</span></a><nav><a href="https://github.com/obiedeh/private-5g-edge-telemetry">Repository</a><a href="https://embodiededge.ai">Lab</a><a href="https://github.com/obiedeh">Obinna Edeh</a></nav></div></div>
   <div class="wrap">
     <h1>Private 5G Edge-AI Capacity Console</h1>
     <div class="sub">
@@ -142,5 +153,5 @@ a:hover { text-decoration: underline; }
       Source: <a href="https://github.com/obiedeh/private-5g-edge-telemetry">github.com/obiedeh/private-5g-edge-telemetry</a>
     </div>
   </div>
-</body>
+<div class="ee-foot"><div class="ee-in">An <a href="https://embodiededge.ai">EmbodiedEdge Labs</a> project. Measured on real hardware, published as found.</div></div></body>
 </html>
