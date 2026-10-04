@@ -8,7 +8,6 @@ import pytest
 
 from private5g_pipeline.cli import parse_args
 
-
 # ---------------------------------------------------------------------------
 # parse_args
 # ---------------------------------------------------------------------------
@@ -75,6 +74,7 @@ def test_main_no_args_raises_system_exit():
 def test_main_synthetic_runs(tmp_path):
     """main() with --generate_synthetic should produce a Parquet file."""
     import pandas as pd
+
     from private5g_pipeline.cli import main
 
     out = tmp_path / "out.parquet"

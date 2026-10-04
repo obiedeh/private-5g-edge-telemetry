@@ -28,9 +28,10 @@ from __future__ import annotations
 
 import json
 import logging
+from collections.abc import Sequence
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import NamedTuple, Sequence
+from typing import NamedTuple
 
 import matplotlib
 

@@ -12,10 +12,14 @@ import logging
 
 from private5g_pipeline.business_cases.manufacturing import (
     DEFAULT_OUTPUT_DIR as MFG_OUT,
+)
+from private5g_pipeline.business_cases.manufacturing import (
     run_manufacturing_business_case,
 )
 from private5g_pipeline.business_cases.pharma import (
     DEFAULT_OUTPUT_DIR as PHA_OUT,
+)
+from private5g_pipeline.business_cases.pharma import (
     run_pharma_business_case,
 )
 

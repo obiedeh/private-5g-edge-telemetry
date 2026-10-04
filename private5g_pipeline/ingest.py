@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import numpy as np
@@ -28,9 +28,9 @@ def generate_synthetic_ran_logs(
     rng = np.random.default_rng(seed)
     # Anchor synthetic data to the current UTC hour; keep timezone so downstream
     # consumers can do tz-aware comparisons without silent offset errors.
-    start_ts = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
+    start_ts = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
     end_ts = start_ts + timedelta(hours=n_hours)
-    timestamps = pd.date_range(start=start_ts, end=end_ts - pd.Timedelta(freq), freq=freq, tz=timezone.utc)
+    timestamps = pd.date_range(start=start_ts, end=end_ts - pd.Timedelta(freq), freq=freq, tz=UTC)
 
     records: list[dict[str, object]] = []
     for cell_idx in range(1, n_cells + 1):

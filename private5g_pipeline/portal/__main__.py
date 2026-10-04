@@ -11,10 +11,14 @@ import logging
 
 from private5g_pipeline.portal.dashboard import (
     DEFAULT_OUTPUT_PATH as DEFAULT_DASHBOARD_PATH,
+)
+from private5g_pipeline.portal.dashboard import (
     generate_dashboard,
 )
 from private5g_pipeline.portal.generate import (
     DEFAULT_OUTPUT_PATH as DEFAULT_PORTAL_PATH,
+)
+from private5g_pipeline.portal.generate import (
     generate_portal,
 )
 

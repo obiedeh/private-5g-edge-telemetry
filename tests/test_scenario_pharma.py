@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from itertools import pairwise
 from pathlib import Path
 
 import pandas as pd
@@ -60,7 +61,7 @@ def test_higher_threshold_does_not_lower_precision(scenario_result):
     """As threshold rises, false-positive count should not increase."""
     sweep = scenario_result["sweep"]
     fps = [r.n_false_positive_windows for r in sweep]
-    for prev, nxt in zip(fps, fps[1:]):
+    for prev, nxt in pairwise(fps):
         assert nxt <= prev, (
             f"false positives should be non-increasing as threshold rises, "
             f"got {fps}"

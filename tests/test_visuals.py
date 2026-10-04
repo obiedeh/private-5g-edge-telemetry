@@ -3,9 +3,8 @@ from __future__ import annotations
 
 import pandas as pd
 
-from private5g_pipeline.visuals import build_visual_report, generate_visual_assets
 from private5g_pipeline.schema import SchemaValidationResult
-
+from private5g_pipeline.visuals import build_visual_report, generate_visual_assets
 
 # ---------------------------------------------------------------------------
 # Helpers

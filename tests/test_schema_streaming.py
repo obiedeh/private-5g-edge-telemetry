@@ -1,7 +1,11 @@
 import pandas as pd
 
 from private5g_pipeline.schema import validate_schema
-from private5g_pipeline.streaming import batched_events, telemetry_events, write_event_log
+from private5g_pipeline.streaming import (
+    batched_events,
+    telemetry_events,
+    write_event_log,
+)
 
 
 def test_validate_schema_reports_missing_required_columns():

@@ -8,7 +8,6 @@ import pytest
 
 from private5g_pipeline.ingest import generate_synthetic_ran_logs, ingest_csv_directory
 
-
 # ---------------------------------------------------------------------------
 # generate_synthetic_ran_logs
 # ---------------------------------------------------------------------------

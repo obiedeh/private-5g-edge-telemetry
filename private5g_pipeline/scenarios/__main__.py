@@ -11,13 +11,17 @@ import logging
 
 from private5g_pipeline.scenarios.manufacturing import (
     DEFAULT_LATENCY_BUDGET_MS,
-    DEFAULT_OUTPUT_DIR as MFG_OUT,
     run_manufacturing_agv_scenario,
+)
+from private5g_pipeline.scenarios.manufacturing import (
+    DEFAULT_OUTPUT_DIR as MFG_OUT,
 )
 from private5g_pipeline.scenarios.pharma import (
     DEFAULT_DETECTION_THRESHOLD,
-    DEFAULT_OUTPUT_DIR as PHA_OUT,
     run_pharma_bioreactor_scenario,
+)
+from private5g_pipeline.scenarios.pharma import (
+    DEFAULT_OUTPUT_DIR as PHA_OUT,
 )
 
 

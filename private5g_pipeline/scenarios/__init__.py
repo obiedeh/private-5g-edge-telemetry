@@ -18,11 +18,15 @@ from __future__ import annotations
 
 from private5g_pipeline.scenarios.manufacturing import (
     DEFAULT_LATENCY_BUDGET_MS,
-    DEFAULT_OUTPUT_DIR as MANUFACTURING_DEFAULT_OUTPUT_DIR,
     run_manufacturing_agv_scenario,
+)
+from private5g_pipeline.scenarios.manufacturing import (
+    DEFAULT_OUTPUT_DIR as MANUFACTURING_DEFAULT_OUTPUT_DIR,
 )
 from private5g_pipeline.scenarios.pharma import (
     DEFAULT_OUTPUT_DIR as PHARMA_DEFAULT_OUTPUT_DIR,
+)
+from private5g_pipeline.scenarios.pharma import (
     run_pharma_bioreactor_scenario,
 )
 

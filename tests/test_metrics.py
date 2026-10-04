@@ -6,7 +6,6 @@ import pandas as pd
 from private5g_pipeline.metrics import build_operator_summary, write_operator_summary
 from private5g_pipeline.schema import SchemaValidationResult
 
-
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------

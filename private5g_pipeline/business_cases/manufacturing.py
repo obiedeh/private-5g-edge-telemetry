@@ -26,8 +26,9 @@ from __future__ import annotations
 import json
 import logging
 import tempfile
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Any, Sequence
+from typing import Any
 
 from private5g_pipeline.scenarios.manufacturing import (
     DEFAULT_FLEET_SIZES,

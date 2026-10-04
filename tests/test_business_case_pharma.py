@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from itertools import pairwise
 from pathlib import Path
 
 import pytest
@@ -62,7 +63,7 @@ def test_higher_threshold_does_not_increase_false_positives(business_case_result
     js = json.loads(Path(business_case_result["sensitivity_path"]).read_text())
     rows = sorted(js["threshold_sensitivity"], key=lambda r: r["threshold"])
     fps = [r["fp_windows"] for r in rows]
-    for prev, nxt in zip(fps, fps[1:]):
+    for prev, nxt in pairwise(fps):
         assert nxt <= prev, (
             f"false positives should be non-increasing as threshold rises, got {fps}"
         )

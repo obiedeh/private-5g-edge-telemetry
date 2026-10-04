@@ -16,10 +16,14 @@ from __future__ import annotations
 
 from private5g_pipeline.business_cases.manufacturing import (
     DEFAULT_OUTPUT_DIR as MANUFACTURING_BUSINESS_CASE_DIR,
+)
+from private5g_pipeline.business_cases.manufacturing import (
     run_manufacturing_business_case,
 )
 from private5g_pipeline.business_cases.pharma import (
     DEFAULT_OUTPUT_DIR as PHARMA_BUSINESS_CASE_DIR,
+)
+from private5g_pipeline.business_cases.pharma import (
     run_pharma_business_case,
 )
 

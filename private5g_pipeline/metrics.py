@@ -6,6 +6,8 @@ import pandas as pd
 
 from private5g_pipeline.export import (
     build_observability_report,
+)
+from private5g_pipeline.export import (
     write_json_report as write_report,
 )
 from private5g_pipeline.schema import SchemaValidationResult

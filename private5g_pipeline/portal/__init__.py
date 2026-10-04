@@ -14,6 +14,8 @@ from __future__ import annotations
 
 from private5g_pipeline.portal.dashboard import (
     DEFAULT_OUTPUT_PATH as DASHBOARD_DEFAULT_OUTPUT_PATH,
+)
+from private5g_pipeline.portal.dashboard import (
     generate_dashboard,
 )
 from private5g_pipeline.portal.generate import (

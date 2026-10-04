@@ -1,5 +1,9 @@
 from private5g_pipeline.ingest import generate_synthetic_ran_logs
-from private5g_pipeline.transform import aggregate_hourly_per_cell_slice, engineer_features, qc_and_cast
+from private5g_pipeline.transform import (
+    aggregate_hourly_per_cell_slice,
+    engineer_features,
+    qc_and_cast,
+)
 
 
 def test_feature_generation_adds_ai_ran_and_edge_signals():
