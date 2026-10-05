@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Repository-level operating instructions for Codex.
+Repository-level engineering rules for anyone, human or automated, changing this repo.
 
 For shared engineering standards and skill definitions, read:
 
@@ -10,9 +10,9 @@ https://github.com/obiedeh/obiedeh/tree/main/agent-skills
 
 ---
 
-# Codex Role
+# Scope of Routine Changes
 
-Use Codex for:
+Routine changes:
 
 - patches to `private5g_pipeline/` modules
 - test generation for `tests/`
@@ -22,10 +22,10 @@ Use Codex for:
 - business-case report generators under `private5g_pipeline/business_cases/`
 - dependency and packaging changes
 
-Do not use Codex for:
+Changes that need explicit owner review first:
 
 - removing or renaming the canonical `private5g_pipeline/` package
-- removing the `private_5g_ran_pipeline.py` back-compat wrapper without explicit Claude Code review
+- removing the `private_5g_ran_pipeline.py` back-compat wrapper
 - adding live private-5G network integration or autonomous control logic
 - adding live edge-AI / vendor-SDK integration (NVIDIA Aerial, Azure Private 5G Core, AWS Wavelength, Nokia / Siemens Industrial Edge)
 - adding live OT/IT system integration (MindSphere, MES, etc.)
@@ -34,9 +34,9 @@ Do not use Codex for:
 Default workflow:
 
 ```text
-Claude Code = architecture review, skill selection, planning, credibility-boundary enforcement
-Codex       = implement, patch, test
-Claude Code = production-readiness check before merge
+plan and review architecture, check the credibility boundary
+implement, patch, test
+production-readiness check before merge
 ```
 
 ---
@@ -131,10 +131,10 @@ synthetic telemetry. Do not introduce claims of:
 
 # Output Format
 
-At the end of each task, Codex should report:
+At the end of each change, report:
 
 1. Files changed and why
 2. Tests run
 3. Tests not run and why
 4. Risks or follow-up work
-5. Whether Claude Code review is needed
+5. Whether owner review is needed
