@@ -7,6 +7,7 @@ name = "private-5g-edge-telemetry"
 version = "0.1.0"
 description = "Simulation-first private 5G telemetry infrastructure for AI-RAN, edge AI, and observability workflows."
 requires-python = ">=3.11"
+license = {text = "MIT"}
 dependencies = [
   "numpy>=1.26.0",
   "pandas>=2.0.0",
