@@ -1,6 +1,6 @@
 # Private 5G + Edge AI for Industry 4.0
 
-A factory floor running 100+ AGVs over private 5G needs sub-20 ms vision decisions. The bottleneck isn't the radio — it's the edge GPU pool. Add too many AGVs and inference latency slips past the control-loop deadline. **At what fleet size does that happen?** That's the question this repo answers, with measured numbers and sensitivity.
+A factory floor running 100+ AGVs over private 5G needs sub-20 ms vision decisions. The bottleneck isn't the radio , it's the edge GPU pool. Add too many AGVs and inference latency slips past the control-loop deadline. **At what fleet size does that happen?** That's the question this repo answers, with measured numbers and sensitivity.
 
 This is the telemetry intelligence layer that sits above a private-5G + edge-AI deployment. Schemas, scenarios with named operational questions, business-case reports with sensitivity, reproducibility you can verify by re-running it yourself.
 
@@ -37,7 +37,7 @@ It does not claim live private 5G deployment, vendor RAN integration, MES/SCADA/
 |---|---|---|
 | ![Latency vs fleet](reports/scenarios/manufacturing_agv/figures/01_latency_vs_fleet.png) | ![Edge load by zone](reports/scenarios/manufacturing_agv/figures/02_edge_load_by_zone.png) | ![Budget-violation timeline](reports/scenarios/manufacturing_agv/figures/03_budget_violation_timeline.png) |
 
-Worst-cell p95 latency stays under 20 ms through 100 AGVs (bars in blue), crosses over at 120 (bars in red). The assembly cell's edge GPU saturation knee — visible as the inflection in the middle plot — is where the budget breaks. Right plot scatters every individual sample across the fleet-size sweep; you can see the cloud climb past the dashed budget line as the fleet grows.
+Worst-cell p95 latency stays under 20 ms through 100 AGVs (bars in blue), crosses over at 120 (bars in red). The assembly cell's edge GPU saturation knee , visible as the inflection in the middle plot , is where the budget breaks. Right plot scatters every individual sample across the fleet-size sweep; you can see the cloud climb past the dashed budget line as the fleet grows.
 
 ### Pipeline benchmarks (measured)
 
@@ -75,8 +75,8 @@ The practical systems problem is not just model accuracy. This telemetry layer s
 | **Latency determinism** | ✓ | The manufacturing answer *is* the latency-determinism question. Worst-cell p95 vs the 20 ms control-loop deadline, with the saturation point named and the sensitivity around it measured. |
 | **Data governance** | ✓ | Schema-typed ingest with fail-soft quarantine. Malformed rows route to a reasoned sink instead of crashing the pipeline. Tested under deliberately corrupted fixtures. |
 | **Runtime stability** | ✓ | Deterministic seeded simulators (byte-identical re-runs). `make verify` chains lint → tests → scenarios → business cases → portal → artifact checks. CI runs the same recipe on every push. |
-| **OT/IT integration (SCADA, PLC, MES)** | ✗ deferred | Boundary block — no connector here. |
-| **Safety certification (IEC 62443, IEC 61508)** | ✗ deferred | Boundary block — out of scope. |
+| **OT/IT integration (SCADA, PLC, MES)** | ✗ deferred | Boundary block , no connector here. |
+| **Safety certification (IEC 62443, IEC 61508)** | ✗ deferred | Boundary block , out of scope. |
 | **Continuous production-load runtime** | ✗ deferred | Seeded simulation, not a live streaming workload. |
 
 ---
@@ -117,9 +117,9 @@ Raw telemetry (CSV or seeded simulator)
 
 Three Python subpackages sit on top:
 
-- `scenarios/` — vertical-specific simulators that emit raw telemetry, then write per-vertical evidence packs after the data flows through the pipeline above.
-- `business_cases/` — call the scenarios at parameter variations (different budgets, different thresholds, different seeds), aggregate the answers, write a one-page Markdown per buyer.
-- `portal/` — render `reports/index.html` from the committed metrics JSONs.
+- `scenarios/` , vertical-specific simulators that emit raw telemetry, then write per-vertical evidence packs after the data flows through the pipeline above.
+- `business_cases/` , call the scenarios at parameter variations (different budgets, different thresholds, different seeds), aggregate the answers, write a one-page Markdown per buyer.
+- `portal/` , render `reports/index.html` from the committed metrics JSONs.
 
 Each layer reuses the one below it. No transform-stack duplication. No scenario duplication inside business cases.
 
@@ -130,7 +130,7 @@ Each layer reuses the one below it. No transform-stack duplication. No scenario 
 - **One pipeline.** Schema-typed ingest, fail-soft quarantine for malformed rows, edge-AI feature engineering, hourly aggregation by cell × slice, Parquet outputs.
 - **Manufacturing scenario.** AGV-fleet capacity over private 5G. One factory, three URLLC cells (assembly, paint, warehouse), fleet sweep from 20 to 160 AGVs. Evidence pack at `reports/scenarios/manufacturing_agv/`.
 - **Manufacturing business case.** One-page Markdown with the headline answer (100 AGVs at 20 ms), a budget sweep (80 at 15 ms · 100 at 20 ms · 120 at 25 ms), a fine-grained search that pinpoints the crossover, and a four-seed stability check. At `reports/business_cases/manufacturing_agv_capacity.md`.
-- **Portability cameo.** A second scenario applies the same pipeline to a non-manufacturing problem — a pharma cleanroom bioreactor watching for contamination. Same code path, different simulator, different operational question (lead time and precision instead of capacity). Lives at `reports/scenarios/pharma_bioreactor/` and `reports/business_cases/pharma_bioreactor_anomaly.md`. Not the headline, but it shows the pipeline isn't single-use.
+- **Portability cameo.** A second scenario applies the same pipeline to a non-manufacturing problem , a pharma cleanroom bioreactor watching for contamination. Same code path, different simulator, different operational question (lead time and precision instead of capacity). Lives at `reports/scenarios/pharma_bioreactor/` and `reports/business_cases/pharma_bioreactor_anomaly.md`. Not the headline, but it shows the pipeline isn't single-use.
 - **Live portal.** Static HTML at `reports/index.html`, served via GitHub Pages, with cards for each artifact. Headline numbers pulled live from the metrics JSONs so the portal can't drift out of sync.
 - **Pytest, mypy, ruff, and CI** cover the reproducibility path on Python 3.11 and 3.12.
 
@@ -213,10 +213,10 @@ If this is connected to measured telemetry later, the GPU-load coefficient, late
 
 | Repo | Layer of the stack |
 |---|---|
-| [`wireless-link-intelligence-system`](https://github.com/obiedeh/wireless-link-intelligence-system) | AI-for-RAN at the PHY layer — channel estimation, OFDM, INT8 ONNX, Jetson |
-| [`ai-ran-kpi-forecasting`](https://github.com/obiedeh/ai-ran-kpi-forecasting) | AI-for-RAN at the operational layer — Non-RT RIC rApp pattern |
+| [`wireless-link-intelligence-system`](https://github.com/obiedeh/wireless-link-intelligence-system) | AI-for-RAN at the PHY layer , channel estimation, OFDM, INT8 ONNX, Jetson |
+| [`ai-ran-kpi-forecasting`](https://github.com/obiedeh/ai-ran-kpi-forecasting) | AI-for-RAN at the operational layer , Non-RT RIC rApp pattern |
 | [`neural-receiver-5g-nr`](https://github.com/obiedeh/neural-receiver-5g-nr) *(scaffold)* | DeepRx-style neural receiver on Sionna |
-| **this repo** | **Edge AI telemetry over private 5G — Industry 4.0 vertical use cases** |
+| **this repo** | **Edge AI telemetry over private 5G , Industry 4.0 vertical use cases** |
 
 The four together cover PHY → operational → vertical for private-5G + AI work in manufacturing.
 

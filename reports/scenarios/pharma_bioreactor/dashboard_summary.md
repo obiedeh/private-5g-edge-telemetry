@@ -1,4 +1,4 @@
-# Pharma — bioreactor anomaly detection
+# Pharma , bioreactor anomaly detection
 
 A pharma cleanroom is monitoring a bioreactor over private 5G. Sensors drift
 slowly across the shift. Late in the day a contamination event starts. The on-cell
@@ -14,8 +14,8 @@ How early does the detector catch the event, and at what precision?
 At z = 3.0 on the `edge_inference_load × latency_ms`
 signal (trailing 1-hour baseline with a 10-minute gap before the test
 sample, fires on 2 consecutive bins over threshold), the detector
-fires ****5 minutes after onset** (precision = 1.00)** on `cell_pha_001`. Across the rest of the day —
-drift only, no real anomaly — it stays quiet.
+fires ****5 minutes after onset** (precision = 1.00)** on `cell_pha_001`. Across the rest of the day ,
+drift only, no real anomaly , it stays quiet.
 
 ## Threshold sensitivity
 
@@ -47,10 +47,10 @@ We tested:
 - Slow drift in SINR, jitter, and edge load on both cells through the day.
 - One ~75-minute contamination event on `cleanroom_A` starting at hour 20.
 - An online z-score detector on the edge × latency signal. We use a trailing
-  baseline with a 10-minute gap before the test sample — without that
+  baseline with a 10-minute gap before the test sample , without that
   gap, the first spike instantly inflates σ and the rest of the event gets buried.
 
 We didn't test against real cleanroom telemetry, MES integration, or any vendor's
 computer-vision model. Real data would change the drift rates, the event signature,
-and the right baseline window. The shape of the question — *how does threshold trade
-off against false-positive cost?* — is what stays portable.
+and the right baseline window. The shape of the question , *how does threshold trade
+off against false-positive cost?* , is what stays portable.

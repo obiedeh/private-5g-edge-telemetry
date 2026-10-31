@@ -1,4 +1,4 @@
-# Manufacturing AGV-fleet capacity — business case
+# Manufacturing AGV-fleet capacity , business case
 
 For the ops lead asking how far the AGV fleet can grow before the line starts
 missing vision deadlines. The deployment shape: private 5G in the plant, edge AI
@@ -17,8 +17,8 @@ vision control-loop budget?
 
 **100 AGVs.** That's the largest fleet that keeps the worst
 cell's hourly p95 latency at or below 20 ms. Past that, the
-assembly-zone cell's GPU pool saturates first — it's the busiest zone, so
-it runs out of inference headroom before paint or warehouse do — and
+assembly-zone cell's GPU pool saturates first , it's the busiest zone, so
+it runs out of inference headroom before paint or warehouse do , and
 latency climbs into budget-breach territory.
 
 ![Worst-cell latency vs fleet size](../scenarios/manufacturing_agv/figures/01_latency_vs_fleet.png)
@@ -68,7 +68,7 @@ The same number every time. The answer is the model, not the noise.
 
 ![Edge GPU load by zone](../scenarios/manufacturing_agv/figures/02_edge_load_by_zone.png)
 
-The middle plot shows why assembly hits the wall first — it carries 42% of the
+The middle plot shows why assembly hits the wall first , it carries 42% of the
 fleet, so its cell's edge GPU load crosses the saturation knee well before paint
 (34%) or warehouse (24%) do.
 
@@ -78,7 +78,7 @@ Every number here comes from a seeded simulation calibrated to a plausible
 edge-AI vision workload. We didn't connect to a live RAN, a vendor edge
 platform, or any specific factory's telemetry. Real measured data would
 shift the GPU-load-per-AGV coefficient, the saturation knee, and the
-post-saturation latency slope. What stays portable is the shape — there's a
+post-saturation latency slope. What stays portable is the shape , there's a
 fleet size beyond which the budget breaks, and you find it by sweeping.
 
 ## Linked evidence

@@ -1,10 +1,10 @@
-# Manufacturing — AGV fleet capacity over private 5G
+# Manufacturing , AGV fleet capacity over private 5G
 
 A factory floor running edge-AI vision on AGVs over private 5G. Ops wants to grow
-the fleet. The radio isn't the bottleneck — the edge GPU pool feeding inference to
+the fleet. The radio isn't the bottleneck , the edge GPU pool feeding inference to
 the AGV cameras is. Add too many AGVs and vision latency slips past the 20 ms
 control-loop deadline. So: how many AGVs? The same deployment shape sits across the
-Industry 4.0 stack — NVIDIA-led AI compute, Ericsson and Nokia private wireless,
+Industry 4.0 stack , NVIDIA-led AI compute, Ericsson and Nokia private wireless,
 Siemens and Rockwell on the automation side. The question is the same regardless of
 which vendors land in your specific deployment.
 
@@ -15,7 +15,7 @@ Can the floor add more AGVs without breaking the 20 ms control-loop budget?
 ## What we found
 
 **100 AGVs.** That's the largest fleet where the worst cell's hourly p95 latency
-stays at or below 20 ms. The assembly zone hits saturation first — it's
+stays at or below 20 ms. The assembly zone hits saturation first , it's
 the busiest zone, so its cell's GPU pool runs out of headroom before the others.
 Beyond that point latency climbs and drop rate starts to bite.
 
@@ -53,4 +53,4 @@ We tested:
 
 We didn't test against real telemetry from any factory or vendor edge platform.
 Plugging in measured data would shift the coefficients above. The shape of the
-question — *there's a fleet size beyond which the budget breaks* — is what's portable.
+question , *there's a fleet size beyond which the budget breaks* , is what's portable.

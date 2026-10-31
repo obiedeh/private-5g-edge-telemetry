@@ -1,4 +1,4 @@
-# Pharma bioreactor anomaly detection — business case
+# Pharma bioreactor anomaly detection , business case
 
 For the QA lead asking how fast a contamination event gets flagged, and
 how noisy the detector is during the rest of the shift.
@@ -13,7 +13,7 @@ and how clean is its precision across the calm hours of the day?
 At z = 3.0 on the edge-load × latency signal, with a
 trailing 1-hour baseline and a 10-minute gap before the test sample, the
 detector fires **5 min after onset** on `cell_pha_001`. Precision across the
-full 24-hour day is **1.00** — no
+full 24-hour day is **1.00** , no
 false positives in the drift hours.
 
 ![Detector z-score across the day](../scenarios/pharma_bioreactor/figures/02_detector_zscore.png)
@@ -61,7 +61,7 @@ Every number here comes from a seeded simulation with one injected
 ~75-minute contamination event on `cleanroom_A`. We didn't connect to a real
 cleanroom, an MES, or any vendor's computer-vision model. Real measured data
 would shift the drift rates, the event signature amplitude, and the right
-baseline window length. What stays portable is the shape — *threshold trades
+baseline window length. What stays portable is the shape , *threshold trades
 false-positive cost against lead time, and a gap in the baseline keeps a
 fresh spike from poisoning its own σ*.
 
