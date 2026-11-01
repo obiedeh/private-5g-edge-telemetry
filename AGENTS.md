@@ -1,5 +1,15 @@
 # AGENTS.md
 
+## Repository hygiene
+
+Read and follow the [Repository hygiene policy in obiedeh-brand/AGENTS.md](https://github.com/obiedeh/obiedeh-brand/blob/main/AGENTS.md#repository-hygiene-standing-every-repo), the single source of these rules.
+
+- Name boards only: `jetson-agx-thor`, `jetson-orin-nx`, `rtx-5090-workstation`.
+- No host names, home-directory paths or LAN addresses in tracked prose, logs, commit messages or branch names; write commands against `~`.
+- Never bypass or disable hooks, or change `core.hooksPath` to evade them. Check diffs and commit messages against `~/.config/git/private-terms.txt` without exposing its contents.
+- Never rewrite history, force push or move tags. Amend only commits that have never been pushed.
+- Keep handoff notes, reviews and plans outside repositories in `~/handoff_notes/`.
+
 Repository-level engineering rules for anyone, human or automated, changing this repo.
 
 For shared engineering standards and skill definitions, read:
@@ -55,7 +65,7 @@ production-readiness check before merge
 # Project Structure
 
 ```text
-private5g_pipeline/        # Canonical Python package — all new code goes here
+private5g_pipeline/        # Canonical Python package, all new code goes here
   ├── ingest.py            # CSV + synthetic ingestion
   ├── schema.py            # Schema validation + quarantine
   ├── transform.py         # Feature engineering, casting, QC
@@ -71,11 +81,11 @@ tests/                     # Pytest suite (12 test files)
 data/                      # Sample CSVs (sample_telemetry.csv committed)
 reports/                   # Generated evidence packs + portal (committed)
   ├── scenarios/
-  │   ├── manufacturing_agv/   # Phase 2 — vertical scenario
-  │   ├── pharma_bioreactor/   # Phase 2 — vertical scenario
+  │   ├── manufacturing_agv/   # Phase 2, vertical scenario
+  │   ├── pharma_bioreactor/   # Phase 2, vertical scenario
   │   └── latest/              # existing telco-generic scenarios
-  ├── business_cases/          # Phase 3 — vertical business cases
-  └── index.html               # Phase 4 — evidence portal
+  ├── business_cases/          # Phase 3, vertical business cases
+  └── index.html               # Phase 4, evidence portal
 docs/                      # Architecture notes
 notebooks/legacy/          # Original Colab notebooks (provenance only)
 ```
@@ -88,7 +98,7 @@ These items are tracked and require explicit instruction before changing:
 
 - **Back-compat wrapper**: `private_5g_ran_pipeline.py` is a 6-line shim that calls
   `private5g_pipeline.cli.main`. It exists for older docs / scripts that invoke the
-  script by name. Do not add logic here — extend `private5g_pipeline.cli` instead.
+  script by name. Do not add logic here, extend `private5g_pipeline.cli` instead.
 - **Legacy notebooks**: `notebooks/legacy/` keeps the original Colab exploration
   notebooks for provenance. They are not part of the canonical entry point and must
   not be re-introduced at the repo root.

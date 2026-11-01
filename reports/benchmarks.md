@@ -1,6 +1,6 @@
 # Pipeline benchmarks
 
-Measured numbers. Not FPS or GPU utilisation — this isn't an inference workload —
+Measured numbers. Not FPS or GPU utilisation , this isn't an inference workload ,
 but the equivalent for a telemetry-intelligence layer: how fast it ingests, how it
 behaves under corrupted input, and how long the full evidence-regeneration chain
 takes on a clean run. Refresh by running `make benchmarks`.

@@ -64,8 +64,8 @@ make business-cases
 
 Two Markdown reports + their raw sensitivity JSONs under `reports/business_cases/`:
 
-- `manufacturing_agv_capacity.md` — *"Can the factory handle N more AGVs without violating the 20 ms latency budget?"* (answer: 100 AGVs; with budget + fine-grained + seed sensitivity)
-- `pharma_bioreactor_anomaly.md` — *"How early can we detect a bioreactor anomaly, and at what precision?"* (answer: 5 min lead time at precision 1.00; with threshold + seed sensitivity)
+- `manufacturing_agv_capacity.md` , *"Can the factory handle N more AGVs without violating the 20 ms latency budget?"* (answer: 100 AGVs; with budget + fine-grained + seed sensitivity)
+- `pharma_bioreactor_anomaly.md` , *"How early can we detect a bioreactor anomaly, and at what precision?"* (answer: 5 min lead time at precision 1.00; with threshold + seed sensitivity)
 
 Each business case re-runs its scenario into a tmpdir at three parameter
 variations and a small set of alternate seeds, then aggregates the headline
@@ -120,7 +120,7 @@ print(result)
 
 - `ModuleNotFoundError: private5g_pipeline` → make sure you ran `pip install -e .` inside the active venv.
 - Parquet write errors → `pip install pyarrow`.
-- For notebook workflows prefer calling `run_pipeline_config()` programmatically rather than `cli.main()` to avoid argparse interference. The legacy exploration notebooks under `notebooks/legacy/` are kept for reference only — they are not part of the canonical entry point.
+- For notebook workflows prefer calling `run_pipeline_config()` programmatically rather than `cli.main()` to avoid argparse interference. The legacy exploration notebooks under `notebooks/legacy/` are kept for reference only , they are not part of the canonical entry point.
 
 ## Legacy entry point
 
